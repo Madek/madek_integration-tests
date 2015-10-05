@@ -1,0 +1,16 @@
+script-defaults:
+  timeout: 60
+
+task-defaults:
+  scripts:
+    bundle:
+      exclusive-executor-resource: bundler
+      body: cd integration-tests && bundle
+
+    test:
+      start-when:
+      - script: bundle
+      body: |
+        set -eux
+        cd integration-tests
+        bundle exec rspec $CIDER_CI_TASK_FILE

@@ -10,253 +10,35 @@ Integration-Tests:
 
   context:
 
-    _cider-ci_generate-tasks:
-      include-match: spec/.*_spec.rb
-
-#      tasks:
-#        isolated_env_test:
-#          environment-variables:
-#            CIDER_CI_TASK_FILE: spec/features/executor/env_vars_spec.rb
-
-    script-defaults:
-      timeout: 300
-
     task-defaults:
-
-      traits:
-        bash: true
-        curl: true
-        git: true
-        leiningen: true
-        linux: true
-        openjdk: true
-        postgresql: true
-        rbenv: true
-        ruby: true
-        Cislave5: true
 
       git-options:
         submodules:
           clone: True
           timeout: 60
-
       max-auto-trials: 1
 
-      trial-attachments:
-        screenshots:
-          glob: 'integration-tests/tmp/*.png'
-          content-type: image/png
-        builder-logs:
-          glob: 'webapp/log/*.log'
-          content-type: text/plain
-        executor-logs:
-          glob: 'api/log/*.log'
-          content-type: text/plain
-        config:
-          glob: 'config/*.yml'
-          content-type: text/yaml
+      traits:
+        bash: true
+        git: true
+        linux: true
+        rbenv: true
+        ruby: true
 
-      environment-variables:
-        RAILS_ENV: test
-        RBENV_VERSION: 2.1
+    subcontexts:
 
-      ports:
-        XVNC_PORT:
-          inet_address: "localhost"
-          min: 5000
-          max: 5999
-        REVERSE_PROXY_HTTP_PORT:
-          inet_address: "localhost"
-          min: 3100
-          max: 3999
-        API_HTTP_PORT:
-          inet_address: "localhost"
-          min: 3100
-          max: 3999
-        WEBAPP_HTTP_PORT:
-          inet_address: "localhost"
-          min: 3100
-          max: 3999
+      - name: Features
 
-      scripts:
+        _cider-ci_include: cider-ci/contexts/feature_defaults.yml
 
-    ### configure #############################################
-
-        configure-webapp-database:
-          body: |
-            #!/usr/bin/env ruby
-            require 'yaml'
-            config = \
-              { 'test' =>
-                { 'adapter' => 'postgresql',
-                  'encoding' => 'unicode',
-                  'host' => 'localhost',
-                  'pool' => 3,
-                  'username' => ENV['PGUSER'],
-                  'password' =>  ENV['PGPASSWORD'],
-                  'database' => "madek_test_#{ENV['CIDER_CI_TRIAL_ID']}"}}
-            File.open('webapp/config/database.yml','w') { |file| file.write config.to_yaml }
+        _cider-ci_generate-tasks:
+          include-match: spec/features/.*_spec.rb
 
 
-        configure:
-          body: |
-            #!/usr/bin/env ruby
-            require 'yaml'
-            config = YAML.load_file 'config/settings.yml'
-            puts config
-            # database
-            config['database']['user']= ENV['PGUSER']
-            config['database']['password']= ENV['PGPASSWORD']
-            config['database']['subname']= "//localhost:5432/cider-ci_test_#{ENV['CIDER_CI_TRIAL_ID']}"
+      - name: Unit
 
-            # reverse-proxy
-            config['server_base_url']= "http://localhost:#{ENV['REVERSE_PROXY_HTTP_PORT']}"
-            config['reverse_proxy']['http']['port']= Integer(ENV['REVERSE_PROXY_HTTP_PORT'])
-            config['reverse_proxy']['nrepl']['enabled']=false
-            # api
-            config['services']['api']['http']['port']= Integer(ENV['API_HTTP_PORT'])
-            config['services']['api']['nrepl']['enabled']= false
-            # builder
-            # ui
-            config['services']['webapp']['http']['port']= Integer(ENV['WEBAPP_HTTP_PORT'])
-            #
-            File.open('config/settings.local.yml','w') { |file| file.write config.to_yaml }
+        _cider-ci_include: cider-ci/contexts/unit_defaults.yml
 
-
-    ###########################################################
-
-        run-reverse-proxy:
-          body: cd reverse-proxy && lein trampoline run
-          start-when:
-          - script: configure
-          terminate-when:
-          - script: shutdown
-            states: [aborted, passed, failed, skipped]
-
-        create-database:
-          body: |
-            #!/usr/bin/env bash
-            set -e
-            set -u
-            cd webapp
-            bundle exec rake db:reset
-            bundle exec rake db:pg:data:restore FILE=db/personas.pgbin
-
-          start-when:
-          - script: webapp-npm-install
-          - script: webapp-bundle
-          - script: configure-webapp-database
-
-    ### Run API ###############################################
-
-        delay-bootstorm:
-          exclusive-executor-resource: bootstorm
-          body: sleep 10
-          start-when:
-          - script: create-database
-          - script: start-vnc
-          - script: bundle
-          - script: webapp-bundle
-
-        run-api:
-          body: cd api && lein trampoline run
-          start-when:
-          - script: delay-bootstorm
-          terminate-when:
-          - script: shutdown
-            states: [aborted, passed, failed, skipped]
-
-        api-is-running:
-          body: until curl --silent --fail --user x:secret -I  http://localhost:${API_HTTP_PORT}/api; do sleep 1; done
-          start-when:
-          - script: run-api
-            states: [executing]
-
-
-    ### Webapp ################################################
-
-        webapp-bundle:
-          exclusive-executor-resource: bundler
-          body: cd webapp && ./bin/bundle_with_cachestamp.sh
-
-        webapp-npm-install:
-          exclusive-executor-resource: npm
-          body: cd webapp && ./bin/install_npm_modules_with_caching.sh
-
-        run-webapp:
-          body: cd webapp && bundle exec rails s -p  ${WEBAPP_HTTP_PORT}
-          timeout: 600
-          start-when:
-          - script: delay-bootstorm
-          - script: webapp-npm-install
-          - script: webapp-bundle
-
-        webapp-is-running:
-          body: until curl --silent --fail  -I  http://localhost:${WEBAPP_HTTP_PORT}; do sleep 1; done
-          start-when:
-            - script: run-webapp
-              states: [executing]
-
-    ### test ##################################################
-
-        bundle:
-          exclusive-executor-resource: bundler
-          body: cd integration-tests && bundle
-
-        start-vnc:
-          body: tightvncserver ":$XVNC_PORT"  -geometry 1024x768 -rfbport "$XVNC_PORT"  -interface '0.0.0.0'
-
-        test:
-          body: |
-            export DISPLAY=":$XVNC_PORT" \
-            && cd integration-tests \
-            && bundle exec rspec $CIDER_CI_TASK_FILE
-          start-when:
-          - script: start-vnc
-          - script: bundle
-          - script: webapp-bundle
-          - script: api-is-running
-          - script: webapp-is-running
-
-        shutdown-delay:
-          start-when:
-          - script: test
-            states: [aborted, passed, failed, skipped]
-          body: |
-            if [ ! -z ${SHUTDOWN_DELAY} ]; then
-              sleep ${SHUTDOWN_DELAY}
-            fi
-
-
-    ### shutdown & cleanup ####################################
-
-        shutdown:
-          body: |
-            curl -X POST --silent --fail --user x:secret -I  http://localhost:${API_HTTP_PORT}/api/management/shutdown
-            curl -X POST --silent --fail --user x:secret -I  http://localhost:${REVERSE_PROXY_HTTP_PORT}/shutdown
-            kill -INT $(lsof -t -wni tcp:${WEBAPP_HTTP_PORT})
-            sleep 5
-          start-when:
-            - script: shutdown-delay
-              states: [aborted, passed, failed, skipped]
-
-
-        delete-database:
-          body: |
-            #!/usr/bin/env bash
-            set -e
-            cd webapp
-            bundle exec rake db:pg:terminate_connections
-            bundle exec rake db:pg:terminate_connections db:drop
-          ignore-state: true
-          start-when:
-          - script: shutdown
-            states: [aborted, passed, failed, skipped]
-
-        stop-vnc:
-          body: tightvncserver -kill ":$XVNC_PORT" -clean
-          ignore-state: true
-          start-when:
-          - script: shutdown
-            states: [aborted, passed, failed, skipped]
+        _cider-ci_generate-tasks:
+          include-match: spec/unit/.*_spec.rb
 
