@@ -6,6 +6,11 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
+
+Lint/AmbiguousRegexpLiteral:
+  Exclude:
+    - 'spec/features/traverse-webapp2api-via-session_spec.rb'
+
 # Offense count: 1
 Metrics/AbcSize:
   Max: 20
@@ -24,3 +29,5 @@ Style/GlobalVars:
 Style/FileName:
   Exclude:
     - 'spec/datalayer-consistency_spec.rb'
+    - 'spec/features/traverse-webapp2api-via-session_spec.rb'
+    - 'spec/unit/datalayer-consistency_spec.rb'

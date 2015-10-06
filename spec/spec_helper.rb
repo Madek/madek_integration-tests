@@ -4,8 +4,11 @@ require 'selenium-webdriver'
 require 'pry'
 require 'logger'
 require 'faker'
+require 'helpers/misc'
 
 RSpec.configure do |config|
+  config.include Helpers::Misc
+
   port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].present? &&
                  ENV['REVERSE_PROXY_HTTP_PORT'] || '3100')
 
