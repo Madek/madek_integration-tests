@@ -1,5 +1,4 @@
 Integration-Tests:
-  priority: 10
 
   description: |
     This job must be run from the master project "Madek"!
