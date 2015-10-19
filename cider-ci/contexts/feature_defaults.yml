@@ -116,7 +116,6 @@ task-defaults:
         bundle exec rake db:pg:data:restore FILE=db/personas.pgbin
 
       start-when:
-      - script: webapp-npm-install
       - script: webapp-bundle
       - script: configure-webapp-database
 
@@ -160,13 +159,6 @@ task-defaults:
         cd webapp
         ./bin/bundle_with_cachestamp.sh
 
-    webapp-npm-install:
-      exclusive-executor-resource: npm
-      body: |
-        set -eux
-        cd webapp
-        ./bin/install_npm_modules_with_caching.sh
-
     run-webapp:
       body: |
         set -eux
@@ -175,7 +167,6 @@ task-defaults:
       timeout: 600
       start-when:
       - script: delay-bootstorm
-      - script: webapp-npm-install
       - script: webapp-bundle
 
     webapp-is-running:
@@ -256,4 +247,3 @@ task-defaults:
       start-when:
       - script: shutdown
         states: [aborted, passed, failed, skipped]
-
