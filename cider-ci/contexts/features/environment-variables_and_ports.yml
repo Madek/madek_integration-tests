@@ -1,0 +1,23 @@
+environment-variables:
+  RAILS_ENV: test
+  RBENV_VERSION: 2.2
+  DATABASE_NAME: madek_test_{{CIDER_CI_TRIAL_ID}}
+  DISPLAY: ":{{XVNC_PORT}}"
+
+ports:
+  XVNC_PORT:
+    inet_address: "localhost"
+    min: 5000
+    max: 5999
+  REVERSE_PROXY_HTTP_PORT:
+    inet_address: "localhost"
+    min: 3100
+    max: 3999
+  API_HTTP_PORT:
+    inet_address: "localhost"
+    min: 3100
+    max: 3999
+  WEBAPP_HTTP_PORT:
+    inet_address: "localhost"
+    min: 3100
+    max: 3999

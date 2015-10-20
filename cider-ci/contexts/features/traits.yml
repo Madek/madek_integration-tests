@@ -1,0 +1,10 @@
+traits:
+  bash: true
+  curl: true
+  git: true
+  leiningen: true
+  linux: true
+  openjdk: true
+  postgresql: true
+  rbenv: true
+  ruby: true

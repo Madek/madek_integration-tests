@@ -1,0 +1,21 @@
+configure:
+  body: |
+    #!/usr/bin/env ruby
+    require 'yaml'
+    config = YAML.load_file 'config/settings.yml'
+    puts config
+    # database
+    config['database']['user']= ENV['PGUSER']
+    config['database']['password']= ENV['PGPASSWORD']
+    config['database']['url']= "postgresql://localhost:5432/#{ENV['DATABASE_NAME']}"
+
+    # api
+    config['services']['api']['http']['port']= Integer(ENV['API_HTTP_PORT'])
+    config['services']['api']['nrepl']['enabled']= false
+
+    # ui
+    config['services']['webapp']['http']['port']= Integer(ENV['WEBAPP_HTTP_PORT'])
+    #
+    File.open('config/settings.local.yml','w') { |file| file.write config.to_yaml }
+
+

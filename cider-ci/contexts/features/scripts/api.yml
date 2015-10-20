@@ -1,0 +1,30 @@
+run-api:
+  body: |
+    set -eux
+    cd api
+    lein trampoline run
+  start-when:
+    - script: configure
+    - script: create-database
+  terminate-when:
+    - script: shutdown-api
+      states: [aborted, passed, failed, skipped]
+
+api-is-running:
+  body: |
+    set -eux
+    until curl --silent --fail --user x:secret -I  http://localhost:${API_HTTP_PORT}/api; do sleep 1; done
+  start-when:
+  - script: run-api
+    states: [executing]
+  terminate-when:
+    - script: shutdown-api
+      states: [aborted, passed, failed, skipped]
+
+shutdown-api:
+  body: |
+    set -eux
+    curl -X POST --silent --fail --user x:secret -I  http://localhost:${API_HTTP_PORT}/api/management/shutdown
+  start-when:
+    - script: test
+      states: [aborted, passed, failed, skipped]

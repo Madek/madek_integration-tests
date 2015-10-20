@@ -1,0 +1,4 @@
+/reverse-proxy/tmp
+/reverse-proxy/logs
+/reverse-proxy/conf/httpd.conf
+/tmp

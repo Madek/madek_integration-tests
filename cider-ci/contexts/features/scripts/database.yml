@@ -1,0 +1,40 @@
+configure-webapp-database:
+  body: |
+    #!/usr/bin/env ruby
+    require 'yaml'
+    config = \
+      { 'test' =>
+        { 'adapter' => 'postgresql',
+          'encoding' => 'unicode',
+          'host' => 'localhost',
+          'pool' => 3,
+          'username' => ENV['PGUSER'],
+          'password' =>  ENV['PGPASSWORD'],
+          'database' => ENV['DATABASE_NAME']}}
+    File.open('webapp/config/database.yml','w') { |file| file.write config.to_yaml }
+
+
+create-database:
+  body: |
+    set -eux
+    cd webapp
+    bundle exec rake db:reset
+    bundle exec rake db:pg:data:restore FILE=db/personas.pgbin
+  start-when:
+  - script: webapp-bundle
+  - script: configure-webapp-database
+
+
+
+delete-database:
+  body: |
+    set -eux
+    cd webapp
+    bundle exec rake db:pg:terminate_connections db:drop
+  ignore-state: true
+  ignore-abort: true
+  start-when:
+    - script: run-api
+      states: [aborted, passed, failed, skipped]
+    - script: run-webapp
+      states: [aborted, passed, failed, skipped]

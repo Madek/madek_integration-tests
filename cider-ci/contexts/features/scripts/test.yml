@@ -1,0 +1,20 @@
+bundle:
+  exclusive-executor-resource: bundler
+  body: |
+    set -eux
+    cd integration-tests
+    bundle
+
+test:
+  timeout: 120
+  body: |
+    set -eux
+    cd integration-tests
+    bundle exec rspec $CIDER_CI_TASK_FILE
+  start-when:
+  - script: api-is-running
+  - script: bundle
+  - script: start-xvnc
+  - script: webapp-is-running
+  - script: run-reverse-proxy
+    states: [executing]

@@ -13,7 +13,8 @@ Integration-Tests:
 
       git-options:
         submodules:
-          clone: True
+          clone:
+            exclude-match: deploy
           timeout: 60
       max-auto-trials: 1
 
@@ -28,7 +29,7 @@ Integration-Tests:
 
       - name: Features
 
-        _cider-ci_include: cider-ci/contexts/feature_defaults.yml
+        _cider-ci_include: cider-ci/contexts/features/defaults.yml
 
         _cider-ci_generate-tasks:
           include-match: spec/features/.*_spec.rb
