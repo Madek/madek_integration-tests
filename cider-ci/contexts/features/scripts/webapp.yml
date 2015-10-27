@@ -1,11 +1,31 @@
-webapp-bundle:
-  exclusive-executor-resource: bundler
+webapp-bundle-mri:
+  exclusive-executor-resource: bundler-mri
   body: |
     set -eux
     cd webapp
     ./bin/bundle_with_cachestamp.sh
 
+webapp-bundle-jruby:
+  exclusive-executor-resource: bundler-jruby
+  environment-variables:
+    RBENV_VERSION: jruby-9000
+  body: |
+    set -eux
+    cd webapp
+    ./bin/bundle_with_cachestamp.sh
+
+webapp-precompile-assets:
+  body: |
+    set -eux
+    cd webapp
+    ./bin/precompile-assets-with-caching.sh
+  start-when:
+    - script: configure
+    - script: webapp-bundle-mri
+
 run-webapp:
+  environment-variables:
+    RBENV_VERSION: jruby-9000
   body: |
     set -eux
     cd webapp
@@ -13,9 +33,10 @@ run-webapp:
   start-when:
     - script: configure
     - script: create-database
-    - script: webapp-bundle
+    - script: webapp-bundle-jruby
+    - script: webapp-precompile-assets
   terminate-when:
-    - script: shutdown
+    - script: shutdown-webapp
       states: [aborted, failed, passed, skipped]
 
 

@@ -2,12 +2,15 @@ trial-attachments:
   screenshots:
     glob: 'integration-tests/tmp/*.png'
     content-type: image/png
-  builder-logs:
+  webapp-logs:
     glob: 'webapp/log/*.log'
     content-type: text/plain
-  executor-logs:
+  api-logs:
     glob: 'api/log/*.log'
     content-type: text/plain
+  webapp-config:
+    glob: 'webapp/config/*.yml'
+    content-type: text/yaml
   config:
     glob: 'config/*.yml'
     content-type: text/yaml

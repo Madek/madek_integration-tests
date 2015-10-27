@@ -1,5 +1,6 @@
 environment-variables:
-  RAILS_ENV: test
+  RAILS_ENV: production
+  DISABLE_SECRETS_STRENGTH_CHECK: yes
   RBENV_VERSION: 2.2
   DATABASE_NAME: madek_test_{{CIDER_CI_TRIAL_ID}}
   DISPLAY: ":{{XVNC_PORT}}"

@@ -2,6 +2,7 @@ configure:
   body: |
     #!/usr/bin/env ruby
     require 'yaml'
+
     config = YAML.load_file 'config/settings.yml'
     puts config
     # database

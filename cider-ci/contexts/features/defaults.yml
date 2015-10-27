@@ -13,5 +13,9 @@ task-defaults:
   templates:
     - src: [integration-tests, cider-ci, templates, httpd.conf]
       dest: [integration-tests, reverse-proxy, conf, httpd.conf]
+    - src: [integration-tests, cider-ci, templates, secrets.yml]
+      dest: [webapp, config, secrets.yml]
+
+
 
 

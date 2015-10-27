@@ -3,7 +3,7 @@ configure-webapp-database:
     #!/usr/bin/env ruby
     require 'yaml'
     config = \
-      { 'test' =>
+      { ENV['RAILS_ENV'] =>
         { 'adapter' => 'postgresql',
           'encoding' => 'unicode',
           'host' => 'localhost',
@@ -12,18 +12,18 @@ configure-webapp-database:
           'password' =>  ENV['PGPASSWORD'],
           'database' => ENV['DATABASE_NAME']}}
     File.open('webapp/config/database.yml','w') { |file| file.write config.to_yaml }
+    File.open('webapp/engines/datalayer/config/database.yml','w') { |file| file.write config.to_yaml }
 
 
 create-database:
   body: |
     set -eux
-    cd webapp
+    cd webapp/engines/datalayer
     bundle exec rake db:reset
     bundle exec rake db:pg:data:restore FILE=db/personas.pgbin
   start-when:
-  - script: webapp-bundle
+  - script: webapp-bundle-mri
   - script: configure-webapp-database
-
 
 
 delete-database:
