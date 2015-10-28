@@ -5,9 +5,11 @@ require 'pry'
 require 'logger'
 require 'faker'
 require 'helpers/misc'
+require 'helpers/configuration_management'
 
 RSpec.configure do |config|
   config.include Helpers::Misc
+  config.include Helpers::ConfigurationManagement
 
   port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].present? &&
                  ENV['REVERSE_PROXY_HTTP_PORT'] || '3100')

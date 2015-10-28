@@ -5,6 +5,6 @@ describe 'The UI', type: :feature do
     visit '/'
     expect(page).to have_content 'Media Archive'
     visit '/api/browser/index.html#/api'
-    wait_until{ page.has_content? 'Relations' }
+    wait_until { page.has_content? 'Relations' }
   end
 end
