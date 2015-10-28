@@ -20,7 +20,6 @@ webapp-precompile-assets:
     cd webapp
     ./bin/precompile-assets-with-caching.sh
   start-when:
-    - script: configure
     - script: webapp-bundle-mri
 
 run-webapp:
@@ -31,7 +30,6 @@ run-webapp:
     cd webapp
     bundle exec rails s -p  ${WEBAPP_HTTP_PORT}
   start-when:
-    - script: configure
     - script: create-database
     - script: webapp-bundle-jruby
     - script: webapp-precompile-assets

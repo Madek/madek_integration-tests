@@ -4,7 +4,6 @@ run-api:
     cd api
     lein trampoline run
   start-when:
-    - script: configure
     - script: create-database
   terminate-when:
     - script: shutdown-api

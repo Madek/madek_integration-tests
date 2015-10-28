@@ -1,0 +1,4 @@
+{{RAILS_ENV}}:
+  url: "{{MADEK_DATABASE_URL}}"
+  username: <%= ENV['PGUSER'] %>
+  password: <%= ENV['PGPASSWORD'] %>
