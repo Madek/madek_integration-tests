@@ -25,6 +25,8 @@ feature 'MediaEntry' do
 
     expect(current_path).to eq '/entries/new'
 
+    visit('/entries/new?nojs=1')
+
     # select file and submit
     within('.app-body') do
       attach_file('media_entry_media_file',
