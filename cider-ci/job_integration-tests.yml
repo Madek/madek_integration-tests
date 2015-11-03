@@ -1,11 +1,24 @@
-Integration-Tests:
+integration-tests:
+
+  name: Integration-Tests
 
   description: |
-    This job must be run from the master project "Madek"!
+    This job runs the top level integration tests.  It must be run from
+    the master project.
+
+  depends-on:
+    - type: job
+      job: all-tests
+      submodule: ['webapp']
+      states: [passed]
+    - type: job
+      job: tests
+      submodule: ['api']
+      states: [passed]
 
   run-on:
-  - type: branch
-    include-match: ^.*$
+    - type: branch
+      include-match: ^.*$
 
   context:
 
