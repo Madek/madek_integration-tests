@@ -9,7 +9,7 @@ run-reverse-proxy:
 
 
 shutdown-reverse-proxy:
-  timeout: 5
+  timeout: 5 Seconds
   body: |
     set -eux
     kill -INT $(lsof -t -wni tcp:${REVERSE_PROXY_HTTP_PORT})

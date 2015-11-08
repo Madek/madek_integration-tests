@@ -1,6 +1,6 @@
 script-defaults:
-  timeout: 180
-  environment-variables_process-templates: true
+  timeout: 3 Minutes
+  template-environment-variables: true
 
 task-defaults:
 

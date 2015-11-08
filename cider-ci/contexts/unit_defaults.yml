@@ -1,5 +1,5 @@
 script-defaults:
-  timeout: 60
+  timeout: 1 Minutes
 
 task-defaults:
   scripts:

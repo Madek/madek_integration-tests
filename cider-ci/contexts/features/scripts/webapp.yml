@@ -51,7 +51,7 @@ webapp-is-running:
 
 
 shutdown-webapp:
-  timeout: 5
+  timeout: 5 Seconds
   body: |
     set -eux
     kill -INT $(lsof -t -wni tcp:${WEBAPP_HTTP_PORT})
