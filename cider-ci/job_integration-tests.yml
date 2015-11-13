@@ -15,6 +15,10 @@ integration-tests:
       job: tests
       submodule: ['api']
       states: [passed]
+    - type: job
+      job: build-docs
+      submodule: ['documentation']
+      states: [passed]
 
   run-on:
     - type: branch
@@ -50,8 +54,8 @@ integration-tests:
 
       - name: Unit
 
+
         _cider-ci_include: cider-ci/contexts/unit_defaults.yml
 
         _cider-ci_generate-tasks:
           include-match: spec/unit/.*_spec.rb
-
