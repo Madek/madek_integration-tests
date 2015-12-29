@@ -18,7 +18,7 @@ webapp-precompile-assets:
   body: |
     set -eux
     cd webapp
-    ./bin/precompile-assets-with-caching.sh
+    ./cider-ci/bin/precompile-assets-with-caching.sh
   start-when:
     - script: webapp-bundle-mri
 
