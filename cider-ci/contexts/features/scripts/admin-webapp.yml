@@ -41,7 +41,7 @@ run-admin-webapp:
 admin-webapp-is-running:
   body: |
     set -eux
-    until curl --silent --fail  -I  http://localhost:${ADMIN_WEBAPP_HTTP_PORT}; do sleep 1; done
+    until curl --silent --fail  -I  http://localhost:${ADMIN_WEBAPP_HTTP_PORT}/admin/status; do sleep 1; done
   start-when:
     - script: run-admin-webapp
       states: [executing]
