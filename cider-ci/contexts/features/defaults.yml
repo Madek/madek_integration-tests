@@ -28,3 +28,6 @@ task-defaults:
 
     - src: [integration-tests, cider-ci, templates, database.yml]
       dest: [admin-webapp, config, database.yml]
+
+    - src: [integration-tests, cider-ci, templates, secrets.yml]
+      dest: [admin-webapp, config, secrets.yml]
