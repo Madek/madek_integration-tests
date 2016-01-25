@@ -13,6 +13,7 @@ test:
     bundle exec rspec $CIDER_CI_TASK_FILE
   start-when:
   - script: api-is-running
+  - script: admin-webapp-is-running
   - script: bundle
   - script: start-xvnc
   - script: webapp-is-running

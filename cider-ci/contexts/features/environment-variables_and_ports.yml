@@ -19,6 +19,10 @@ ports:
     inet_address: "localhost"
     min: 3100
     max: 3999
+  ADMIN_WEBAPP_HTTP_PORT:
+    inet_address: "localhost"
+    min: 3100
+    max: 3999
   WEBAPP_HTTP_PORT:
     inet_address: "localhost"
     min: 3100

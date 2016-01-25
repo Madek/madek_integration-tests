@@ -2,6 +2,7 @@ scripts:
   _cider-ci_include:
     - cider-ci/contexts/features/scripts/api.yml
     - cider-ci/contexts/features/scripts/database.yml
+    - cider-ci/contexts/features/scripts/admin-webapp.yml
     - cider-ci/contexts/features/scripts/reverse-proxy.yml
     - cider-ci/contexts/features/scripts/test.yml
     - cider-ci/contexts/features/scripts/webapp.yml
