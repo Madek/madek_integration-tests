@@ -3,8 +3,12 @@ require 'spec_helper'
 
 GRUMPY_CAT_PATH= File.absolute_path('../api/datalayer/spec/data/images/grumpy_cat.jpg')
 
-feature 'MediaEntry' do
-  scenario 'Up- and download' do
+feature 'MediaEntry Up- and download.' do
+
+  scenario 'Upload a Media-Entry in the UI and publish it. ' \
+    << 'Access the API, follow the links to the corresponding Media-File. ' \
+    << 'Download the Media-File via the API in a complete piece and in parts. ' \
+    << 'Verify that the downloaded file is identical to the uploaded file.' do
     clean_results = ['DELETE FROM meta_data;',
                      'DELETE FROM zencoder_jobs;',
                      'DELETE FROM media_files;',
