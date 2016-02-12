@@ -12,7 +12,7 @@ integration-tests:
       submodule: ['webapp']
       states: [passed]
     - type: job
-      job: tests
+      job: all-tests
       submodule: ['api']
       states: [passed]
     - type: job
