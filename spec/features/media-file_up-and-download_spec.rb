@@ -1,4 +1,3 @@
-require 'addressable/uri'
 require 'spec_helper'
 
 GRUMPY_CAT_PATH= File.absolute_path('../api/datalayer/spec/data/images/grumpy_cat.jpg')
@@ -51,14 +50,14 @@ feature 'MediaEntry Up- and download.' do
 
     click_on 'API'
     api_click_on_relation_method 'media-entries', 'GET'
-    click_on 'Continue'
+    within('.modal-footer') { click_on 'GET' }
     api_click_on_relation_method '1', 'GET'
     api_click_on_relation_method 'media-file', 'GET'
     api_click_on_relation_method 'data-stream', 'GET'
     expect(page).to have_content "200 OK"
 
     # Download via API
-    data_stream_path = Addressable::URI.parse(current_url).fragment
+    data_stream_path = find('input#url').value
     url = Capybara.app_host + data_stream_path
     buffer = `curl -u adam:password #{url}`
     digest_original= Digest::SHA1.file(GRUMPY_CAT_PATH).hexdigest
