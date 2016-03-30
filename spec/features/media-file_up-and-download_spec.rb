@@ -26,7 +26,7 @@ feature 'MediaEntry Up- and download.' do
     expect(page).to have_content 'Sie haben sich angemeldet.'
 
     within('.ui-body-title-actions') do
-      find('.button-primary').click
+      find('.button-primary', text: 'Create media entry').click
     end
 
     expect(current_path).to eq '/entries/new'
@@ -70,6 +70,5 @@ feature 'MediaEntry Up- and download.' do
     partial_digest.update `curl -r 0-999 -u adam:password #{url}`
     partial_digest.update `curl -r 1000- -u adam:password #{url}`
     expect(partial_digest.hexdigest).to be== digest_original
-
   end
 end
