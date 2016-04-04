@@ -14,14 +14,6 @@ webapp-bundle-jruby:
     cd webapp
     ./bin/bundle_with_cachestamp.sh
 
-webapp-precompile-assets:
-  body: |
-    set -eux
-    cd webapp
-    ./cider-ci/bin/precompile-assets-with-caching.sh
-  start-when:
-    - script: webapp-bundle-mri
-
 run-webapp:
   environment-variables:
     RBENV_VERSION: jruby-9000
@@ -32,7 +24,6 @@ run-webapp:
   start-when:
     - script: create-database
     - script: webapp-bundle-jruby
-    - script: webapp-precompile-assets
   terminate-when:
     - script: shutdown-webapp
       states: [aborted, failed, passed, skipped]
