@@ -1,7 +1,7 @@
 create-database:
   body: |
     set -eux
-    cd webapp/engines/datalayer
+    cd webapp/datalayer
     bundle exec rake db:reset
     bundle exec rake db:pg:data:restore FILE=db/personas.pgbin
   start-when:

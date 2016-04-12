@@ -10,22 +10,22 @@ describe 'The datalayer of the Webapp, Admin Webapp and the API' do
 
   context 'Webapp & API' do
     it 'References exactly the same commit' do
-      expect(commit_id('../webapp/engines/datalayer')).to \
+      expect(commit_id('../webapp/datalayer')).to \
         be == commit_id('../api/datalayer')
     end
   end
 
   context 'Admin Webapp & API' do
     it 'References exactly the same commit' do
-      expect(commit_id('../admin-webapp/engines/datalayer')).to \
+      expect(commit_id('../admin-webapp/datalayer')).to \
         be == commit_id('../api/datalayer')
     end
   end
 
   context 'Webapp & Admin Webapp' do
     it 'References exactly the same commit' do
-      expect(commit_id('../webapp/engines/datalayer')).to \
-        be == commit_id('../admin-webapp/engines/datalayer')
+      expect(commit_id('../webapp/datalayer')).to \
+        be == commit_id('../admin-webapp/datalayer')
     end
   end
 end

@@ -24,7 +24,7 @@ task-defaults:
       dest: [webapp, config, database.yml]
 
     - src: [integration-tests, cider-ci, templates, database.yml]
-      dest: [webapp, engines, datalayer, config, database.yml]
+      dest: [webapp, datalayer, config, database.yml]
 
     - src: [integration-tests, cider-ci, templates, database.yml]
       dest: [admin-webapp, config, database.yml]
