@@ -1,10 +1,3 @@
-admin-webapp-bundle-mri:
-  exclusive-executor-resource: bundler-mri
-  body: |
-    set -eux
-    cd admin-webapp
-    ./bin/bundle_with_cachestamp.sh
-
 admin-webapp-bundle-jruby:
   exclusive-executor-resource: bundler-jruby
   environment-variables:
@@ -13,14 +6,6 @@ admin-webapp-bundle-jruby:
     set -eux
     cd admin-webapp
     ./bin/bundle_with_cachestamp.sh
-
-admin-webapp-precompile-assets:
-  body: |
-    set -eux
-    cd admin-webapp
-    ./cider-ci/bin/precompile-assets-with-caching.sh
-  start-when:
-    - script: admin-webapp-bundle-mri
 
 run-admin-webapp:
   environment-variables:
@@ -32,7 +17,6 @@ run-admin-webapp:
   start-when:
     - script: create-database
     - script: admin-webapp-bundle-jruby
-    - script: admin-webapp-precompile-assets
   terminate-when:
     - script: shutdown-admin-webapp
       states: [aborted, failed, passed, skipped]
