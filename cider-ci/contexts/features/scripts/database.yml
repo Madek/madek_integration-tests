@@ -1,17 +1,17 @@
 create-database:
   body: |
+    #!/usr/bin/env bash
     set -eux
     cd webapp/datalayer
-    bundle exec rake db:reset
-    bundle exec rake db:pg:data:restore FILE=db/personas.pgbin
-  start-when:
-  - script: webapp-bundle-mri
+    createdb "${DATABASE_NAME}"
+    psql -d "${DATABASE_NAME}" -f db/structure.sql
+    pg_restore --disable-triggers --exit-on-error -a -x -O -d "${DATABASE_NAME}" db/personas.pgbin
 
 delete-database:
   body: |
     set -eux
     cd webapp
-    bundle exec rake db:pg:terminate_connections db:drop
+    dropdb "${DATABASE_NAME}"
   ignore-state: true
   ignore-abort: true
   start-when:

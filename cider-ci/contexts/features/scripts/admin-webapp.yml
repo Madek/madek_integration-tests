@@ -1,22 +1,11 @@
-admin-webapp-bundle-jruby:
-  exclusive-executor-resource: bundler-jruby
-  environment-variables:
-    RBENV_VERSION: jruby-9000
-  body: |
-    set -eux
-    cd admin-webapp
-    ./bin/bundle_with_cachestamp.sh
-
 run-admin-webapp:
-  environment-variables:
-    RBENV_VERSION: jruby-9000
   body: |
     set -eux
     cd admin-webapp
+    export PATH=$(pwd)/vendor/jruby/bin/:$(ruby -e "puts ENV['PATH'].split(':').reject{|s| s.match(/\.rbenv/)}.join(':')")
     bundle exec rails s -p  ${ADMIN_WEBAPP_HTTP_PORT}
   start-when:
     - script: create-database
-    - script: admin-webapp-bundle-jruby
   terminate-when:
     - script: shutdown-admin-webapp
       states: [aborted, failed, passed, skipped]

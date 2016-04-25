@@ -1,10 +1,22 @@
+precompile-api:
+  exclusive-executor-resource: precompile-madek-api
+  body: |
+    #!/usr/bin/env bash
+    set -eux
+    cd api
+    ./cider-ci/bin/compile_uberjar.sh
+
 run-api:
   body: |
     set -eux
     cd api
-    lein trampoline run
+    export JAVA_HOME=${OPENJDK8_HOME}
+    export PATH=${JAVA_HOME}/bin:${PATH}
+    export CLASSPATH="../config:target/api.jar"
+    java madek.api.main
   start-when:
     - script: create-database
+    - script: precompile-api
   terminate-when:
     - script: shutdown-api
       states: [aborted, passed, failed, skipped]
