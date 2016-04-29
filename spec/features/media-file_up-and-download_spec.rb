@@ -26,7 +26,7 @@ feature 'MediaEntry Up- and download.' do
     expect(page).to have_content 'Sie haben sich angemeldet.'
 
     within('.ui-body-title-actions') do
-      find('.button-primary', text: 'Create media entry').click
+      find('.button-primary', text: 'Medien importieren').click
     end
 
     expect(current_path).to eq '/entries/new'
@@ -41,10 +41,11 @@ feature 'MediaEntry Up- and download.' do
 
     within('#app') do
       alert = find('.ui-alert.warning')
-      expect(alert).to have_content 'Entry is not published yet!'
+      expect(alert)
+        .to have_content 'Dieser Medieneintrag ist noch nicht veröffentlicht!'
     end
 
-    click_on 'Publish!'
+    click_on 'Veröffentlichen'
 
     accept_prompt
 
