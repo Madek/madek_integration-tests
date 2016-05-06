@@ -49,7 +49,7 @@ feature 'MediaEntry Up- and download.' do
 
     accept_prompt
 
-    click_on 'API'
+    visit('/api/browser/index.html')
     api_click_on_relation_method 'media-entries', 'GET'
     within('.modal-footer') { click_on 'GET' }
     api_click_on_relation_method '1', 'GET'
