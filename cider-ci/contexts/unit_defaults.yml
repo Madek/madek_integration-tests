@@ -4,6 +4,7 @@ script-defaults:
 task-defaults:
   scripts:
     bundle:
+      timeout: 20 Minutes
       exclusive-executor-resource: bundler
       body: cd integration-tests && bundle
 

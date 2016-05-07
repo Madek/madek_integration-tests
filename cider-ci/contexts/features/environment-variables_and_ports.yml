@@ -1,7 +1,6 @@
 environment-variables:
   RAILS_ENV: production
   DISABLE_SECRETS_STRENGTH_CHECK: yes
-  RBENV_VERSION: 2.2
   DATABASE_NAME: madek_int-test_{{CIDER_CI_TRIAL_ID}}
   MADEK_DATABASE_URL: "postgresql://localhost:5432/{{DATABASE_NAME}}?pool=3"
   DISPLAY: ":{{XVNC_PORT}}"

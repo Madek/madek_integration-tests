@@ -28,6 +28,9 @@ integration-tests_overview:
         rbenv: true
         ruby: true
 
+      environment-variables:
+        RBENV_VERSION: '2.2.4'
+
     subcontexts:
 
       - name: Unit
@@ -51,4 +54,3 @@ integration-tests_overview:
                   mkdir spec_doc
                   cd integration-tests
                   ../webapp/cider-ci/bin/render-specs.js spec/features > ../spec_doc/integration-tests_overview.html
-

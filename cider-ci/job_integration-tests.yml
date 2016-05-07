@@ -39,8 +39,11 @@ integration-tests:
         bash: true
         git: true
         linux: true
-        rbenv: true
         ruby: true
+        rbenv: true
+
+      environment-variables:
+        RBENV_VERSION: '2.2.4'
 
     subcontexts:
 

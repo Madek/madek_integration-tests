@@ -1,4 +1,5 @@
 bundle:
+  timeout: 20 Minutes
   exclusive-executor-resource: bundler
   body: |
     set -eux
