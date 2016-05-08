@@ -1,5 +1,8 @@
 require 'spec_helper'
 
+# NOTE: UI strings are hardcoded on purpose, working strings are part of test!
+# Needs to be updated when translations.csv changes in `webapp`!
+
 GRUMPY_CAT_PATH= File.absolute_path('../api/datalayer/spec/data/images/grumpy_cat.jpg')
 
 feature 'MediaEntry Up- and download.' do
@@ -42,10 +45,10 @@ feature 'MediaEntry Up- and download.' do
     within('#app') do
       alert = find('.ui-alert.warning')
       expect(alert)
-        .to have_content 'Dieser Medieneintrag ist noch nicht veröffentlicht!'
+        .to have_content 'Dieser Medieneintrag ist noch nicht gesichert!'
     end
 
-    click_on 'Veröffentlichen'
+    click_on 'Speichern'
 
     accept_prompt
 
