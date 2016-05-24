@@ -32,9 +32,9 @@ feature 'MediaEntry Up- and download.' do
       find('.button-primary', text: 'Medien importieren').click
     end
 
-    expect(current_path).to eq '/entries/new'
+    expect(current_path).to eq '/my/upload'
 
-    visit('/entries/new?nojs=1')
+    visit('/my/upload?nojs=1')
 
     # select file and submit
     within('.app-body') do
