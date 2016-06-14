@@ -42,15 +42,15 @@ feature 'MediaEntry Up- and download.' do
       find("*[type='submit']").click
     end
 
-    within('#app') do
-      alert = find('.ui-alert.warning')
-      expect(alert)
-        .to have_content 'Dieser Medieneintrag ist noch nicht gesichert!'
-    end
-
-    click_on 'Speichern'
-
-    accept_prompt
+    # within('#app') do
+    #   alert = find('.ui-alert.warning')
+    #   expect(alert)
+    #     .to have_content 'Dieser Medieneintrag ist noch nicht gesichert!'
+    # end
+    #
+    # click_on 'Speichern'
+    # 
+    # accept_prompt
 
     visit('/api/browser/index.html')
     api_click_on_relation_method 'media-entries', 'GET'
