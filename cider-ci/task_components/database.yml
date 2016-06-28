@@ -1,0 +1,29 @@
+traits:
+  Ruby: true
+  PostgreSQL: true
+
+
+scripts:
+
+  create-database:
+    body: |
+      #!/usr/bin/env bash
+      set -eux
+      createdb "$DATABASE"
+      psql -d "$DATABASE" -f webapp/datalayer/db/structure.sql
+      pg_restore --disable-triggers --exit-on-error -a -x -O -d "${DATABASE}" webapp/datalayer/db/personas.pgbin
+
+  test:
+    start_when:
+      database has been created:
+        script_key: create-database
+
+  delete-database:
+    body: |
+      #!/usr/bin/env bash
+      set -eux
+      dropdb "$DATABASE"
+    start_when:
+      test is in termial state:
+        script_key: test
+        states: [aborted, passed, failed, skipped]

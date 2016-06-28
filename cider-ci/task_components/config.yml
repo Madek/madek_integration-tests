@@ -1,0 +1,24 @@
+templates:
+
+  database base for the webapp:
+    src: integration-tests/cider-ci/templates/database.yml
+    dest: admin-webapp/config/database.yml
+
+  database base for the admin-webapp:
+    src: integration-tests/cider-ci/templates/database.yml
+    dest: webapp/config/database.yml
+
+  settings:
+    src: integration-tests/cider-ci/templates/settings.yml
+    dest: config/settings.local.yml
+
+  secrets for the webapp:
+    src: integration-tests/cider-ci/templates/secrets.yml
+    dest: webapp/config/secrets.yml
+
+  secrets for the admin-webapp:
+    src: integration-tests/cider-ci/templates/secrets.yml
+    dest: admin-webapp/config/secrets.yml
+
+
+

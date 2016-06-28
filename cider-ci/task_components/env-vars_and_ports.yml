@@ -1,0 +1,19 @@
+environment_variables:
+  RAILS_ENV: production
+  DISABLE_SECRETS_STRENGTH_CHECK: 'yes'
+  DATABASE: madek_int-test_{{CIDER_CI_TRIAL_ID}}
+  # MADEK_DATABASE_URL: "postgresql://localhost:5432/{{DATABASE_NAME}}?pool=3"
+
+ports:
+  REVERSE_PROXY_HTTP_PORT:
+    min: 3100
+    max: 3999
+  API_HTTP_PORT:
+    min: 3100
+    max: 3999
+  ADMIN_WEBAPP_HTTP_PORT:
+    min: 3100
+    max: 3999
+  WEBAPP_HTTP_PORT:
+    min: 3100
+    max: 3999

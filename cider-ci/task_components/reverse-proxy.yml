@@ -1,0 +1,32 @@
+traits:
+  Apache 2: yes
+
+templates:
+  reverse proxy conf:
+    src: integration-tests/cider-ci/templates/httpd.conf
+    dest: integration-tests/reverse-proxy/conf/httpd.conf
+
+scripts:
+
+  run-reverse-proxy:
+    body: |
+      set -eux
+      cd integration-tests
+      LD_LIBRARY_PATH=/usr/lib/apache2/modules/ /usr/sbin/apache2 -d reverse-proxy/ -f conf/httpd.conf -e info -DFOREGROUND
+
+  test:
+    start_when:
+      the reverse proxy is executing:
+        script_key: run-reverse-proxy
+        states: [executing]
+
+  shutdown-reverse-proxy:
+    timeout: 5 Seconds
+    body: |
+      set -eux
+      kill -INT $(lsof -t -wni tcp:${REVERSE_PROXY_HTTP_PORT})
+      sleep 1
+    start_when:
+      test is in terminal state:
+        script_key: test
+        states: [aborted, defective, passed, failed, skipped]
