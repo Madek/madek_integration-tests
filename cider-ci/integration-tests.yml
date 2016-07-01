@@ -40,7 +40,9 @@ task_defaults:
         set -eux
         export PATH=~/.rubies/$RUBY/bin:$PATH
         cd integration-tests
-        bundle exec rspec $CIDER_CI_TASK_FILE
+        mkdir -p log
+        xvfb-run -a -e log/xvfb.log \
+          bundle exec rspec $CIDER_CI_TASK_FILE
 
 generate_tasks:
   include_match: spec/features/.*_spec.rb
