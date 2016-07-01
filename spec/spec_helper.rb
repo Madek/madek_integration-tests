@@ -23,12 +23,11 @@ RSpec.configure do |config|
     Selenium::WebDriver::Firefox.path = ENV['FIREFOX_ESR_PATH']
   end
 
-  Capybara.current_driver = :poltergeist
   Capybara.app_host = "http://localhost:#{port}"
   Capybara.server_port = port
 
-  config.before(:all) do |_example|
-    Capybara.current_driver = :poltergeist
+  config.before(:all) do |example|
+    set_driver example
     Capybara.app_host = "http://localhost:#{port}"
     Capybara.server_port = port
 
@@ -36,10 +35,22 @@ RSpec.configure do |config|
     $logger.level = Logger::WARN
   end
 
-  config.before(:each) do |_example|
-    Capybara.current_driver = :poltergeist
+  config.before(:each) do |example|
+    set_driver example
     Capybara.app_host = "http://localhost:#{port}"
     Capybara.server_port = port
+  end
+
+  def set_driver example = nil
+    example_driver =
+      begin
+        example.metadata[:driver].presence.try(:to_sym)
+      rescue Exception => _
+        nil
+      end
+    Capybara.current_driver = \
+      ENV['CAPYBARA_DRIVER'].presence.try(:to_sym) \
+      || example_driver || :selenium
   end
 
   config.expect_with :rspec do |expectations|
