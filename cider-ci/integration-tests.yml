@@ -14,6 +14,8 @@ task_defaults:
 
   dispatch_storm_delay_duration: 23 Seconds
 
+  load: 3
+
   git_options:
     submodules:
       include_match: ^.+$
