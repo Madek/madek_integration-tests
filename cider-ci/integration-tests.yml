@@ -48,3 +48,4 @@ task_defaults:
 
 generate_tasks:
   include_match: spec/features/.*_spec.rb
+  submodule: [integration-tests]
