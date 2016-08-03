@@ -17,15 +17,14 @@ feature 'MediaEntry Up- and download.' do
                      'DELETE FROM edit_sessions;',
                      'DELETE FROM collections;',
                      'DELETE FROM filter_sets;',
-                     'DELETE FROM media_entries;'].map do|cmd|
+                     'DELETE FROM media_entries;',
+                     'DELETE FROM context_keys'].map do|cmd|
       Helpers::ConfigurationManagement.invoke_sql cmd
     end
 
     visit '/'
     expect(page).to have_content 'Media Archive'
-    find('input#login').set 'adam'
-    find('input#password').set 'password'
-    find('form#login_form').find('[type=submit]').click
+    login_as_database_user
     expect(page).to have_content 'Sie haben sich angemeldet.'
 
     within('.ui-body-title-actions') do
