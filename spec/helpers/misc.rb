@@ -6,8 +6,8 @@ module Helpers
     end
 
     def login_as_database_user(login: 'adam', password: 'password')
-      click_link 'database-user-login-tab'
-      within '#database-user' do
+      click_link 'login_menu-tab-system'
+      within '#login_menu-pane-system' do
         fill_in 'login', with: login
         fill_in 'password', with: password
         find('[type=submit]').click
