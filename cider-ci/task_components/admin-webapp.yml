@@ -32,7 +32,7 @@ scripts:
         script_key: configure-admin-webapp-database
 
   admin-webapp-is-running:
-    timeout: 1 Minute 30 Seconds
+    timeout: 3 Minute 30 Seconds
     body: |
       set -eux
       until curl --silent --fail -I  \
