@@ -12,8 +12,7 @@ RSpec.configure do |config|
   config.include Helpers::Misc
   config.include Helpers::ConfigurationManagement
 
-  port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].present? &&
-                 ENV['REVERSE_PROXY_HTTP_PORT'] || '3100')
+  port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].presence || '3100')
 
   Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, js_errors: false)
