@@ -1,0 +1,17 @@
+releases:
+
+- version_major: 1
+  version_minor: 0
+  version_patch: 0
+  version_pre: '1'
+  name: Second
+  info_url: 'http://example.com/2'
+  description: second release (pre)
+
+- version_major: 1
+  version_minor: 0
+  version_patch: 0
+  version_pre: null
+  name: First
+  info_url: 'http://example.com/1'
+  description: first release

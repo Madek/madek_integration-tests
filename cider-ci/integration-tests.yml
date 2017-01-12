@@ -49,3 +49,14 @@ task_defaults:
 generate_tasks:
   include_match: spec/features/.*_spec.rb
   submodule: [integration-tests]
+
+
+# tasks-specific config:
+tasks:
+  spec/features/release_info_spec.rb:
+    scripts:
+      prepare-config:
+        body: 'cp ./integration-tests/spec/fixtures/config/* ./config/'
+      test:
+        start_when:
+          config is prepared: { script_key: prepare-config }
