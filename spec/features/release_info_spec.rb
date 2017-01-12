@@ -18,11 +18,10 @@ describe 'webapp: release info', type: :feature do
   it 'shows deploy and release info on releases page' do
     visit '/release'
 
-    # NOTE: this expects the client to be on UTC timezone (like CI server)
     expect(find('.ui-container.bright').text)
       .to eq <<-TEXT.strip_heredoc.tr("\n", ' ').gsub('  ', ' ').strip
 
-        Letztes Deployment: Freitag, 5. August 2016 12:35
+        Letztes Deployment: Freitag, 5. August 2016 14:35
         Madek v1.0.0-1 "Second"
         second release (pre)
 
