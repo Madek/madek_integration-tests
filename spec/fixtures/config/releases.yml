@@ -6,7 +6,12 @@ releases:
   version_pre: '1'
   name: Second
   info_url: 'http://example.com/2'
-  description: second release (pre)
+  description: |
+    second release (pre)
+
+    ## Changes:
+
+    - fix: foo
 
 - version_major: 1
   version_minor: 0
@@ -14,4 +19,10 @@ releases:
   version_pre: null
   name: First
   info_url: 'http://example.com/1'
-  description: first release
+  description: |
+    first release
+
+    ## Changes:
+
+    - feat: foo
+    - fix: bar

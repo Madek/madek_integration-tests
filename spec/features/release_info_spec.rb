@@ -19,17 +19,20 @@ describe 'webapp: release info', type: :feature do
     visit '/release'
 
     expect(find('.ui-container.bright').text)
-      .to eq <<-TEXT.strip_heredoc.tr("\n", ' ').gsub('  ', ' ').strip
+      .to eq <<-TEXT.gsub(/\s+/, ' ').strip
 
-        Letztes Deployment: Freitag, 5. August 2016 14:35
-        Madek v1.0.0-1 "Second"
+        Deployment: Freitag, 5. August 2016 23:03,
+        Build: Freitag, 5. August 2016 14:35
+
+        Madek v1.0.0-1 \"Second\"
         second release (pre)
+        Changes: fix: foo
 
         Vorherige Versionen
-        Madek 1.0.0 "First"
+        Madek 1.0.0 \"First\"
         first release
+        Changes: feat: foo fix: bar
 
       TEXT
   end
-
 end
