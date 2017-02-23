@@ -10,7 +10,9 @@ database:
   subprotocol: "postgresql"
   user: REPLACE_WITH_PGUSER
   password: REPLACE_WITH_PGPASSWORD
+  pool: 3
   max_pool_size: 3
+  timeout: 30000
 
 services:
 
@@ -23,5 +25,3 @@ services:
       context: ""
       sub_context: /api
       ssl: false
-
-
