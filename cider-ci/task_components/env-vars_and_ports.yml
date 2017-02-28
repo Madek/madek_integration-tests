@@ -1,9 +1,10 @@
 environment_variables:
   RAILS_ENV: production
   DISABLE_SECRETS_STRENGTH_CHECK: 'yes'
+  DISABLE_HTTPS_THIS_IS_A_BAD_IDEA: 'but_its_ok_for_integration_testing'
   DATABASE: madek_int-test_{{CIDER_CI_TRIAL_ID}}
   # MADEK_DATABASE_URL: "postgresql://localhost:5432/{{DATABASE_NAME}}?pool=3"
-  TZ: 'CET' # set timezone to something other than UTC to support testing timezone support. 
+  TZ: 'CET' # set timezone to something other than UTC to support testing timezone support.
 
 ports:
   REVERSE_PROXY_HTTP_PORT:
