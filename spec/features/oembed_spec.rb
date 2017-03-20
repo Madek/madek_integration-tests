@@ -19,7 +19,7 @@ feature 'App: Embedding' do
     LINK_TYPE = 'application/json+oembed'.freeze
     EXPECTED_LINK = {
       rel: 'alternate',
-      href: https_scheme(full_url('/oembed?url=%2Fentries%2F924057ea-5f9a-4a81-85dc-aa067577d6f1')),
+      href: full_url('/oembed?url=%2Fentries%2F924057ea-5f9a-4a81-85dc-aa067577d6f1'),
       title: 'A public movie to test public viewing oEmbed Profile'
     }.freeze
 
@@ -45,11 +45,11 @@ feature 'App: Embedding' do
       end
       expect(response[:body][:title]).to eq 'A public movie to test public viewing'
       expect(response[:body][:width]).to eq 620
-      expect(response[:body][:height]).to eq 348
+      expect(response[:body][:height]).to eq 403
       expect(response[:body][:provider_name]).to eq 'Media Archive'
-      expect(response[:body][:provider_url]).to eq https_scheme(full_url(''))
+      expect(response[:body][:provider_url]).to eq full_url('')
       expect(response[:body][:html]).to include '</iframe>'
-      expect(response[:body][:html]).to include 'src="' + https_scheme(full_url('/entries/924057ea-5f9a-4a81-85dc-aa067577d6f1/embedded?maxheight=348&maxwidth=620')) + '"'
+      expect(response[:body][:html]).to include 'src="' + full_url('/entries/924057ea-5f9a-4a81-85dc-aa067577d6f1/embedded?maxheight=403&maxwidth=620') + '"'
     end
 
     # example '`photo` type' # embed images?
@@ -67,24 +67,25 @@ feature 'App: Embedding' do
 
     # params:
 
+    # NOTE: more thorough sizing spec in `webapp`!
     it 'supports the `maxwidth` param' do
-      max_width = 100
+      max_width = 500
       response = get_json(
         set_params_for_url(
           API_URL, maxwidth: max_width, url: full_url(VIDEO_ENTRY)))
 
       expect_valid_oembed_response(response)
-      expect(response[:body][:width]).to be <= max_width.to_s
+      expect(response[:body][:width]).to be <= max_width.to_i
     end
 
     it 'supports the `maxheight` param' do
-      max_height = 100
+      max_height = 500
       response = get_json(
         set_params_for_url(
           API_URL, maxheight: max_height, url: full_url(VIDEO_ENTRY)))
 
       expect_valid_oembed_response(response)
-      expect(response[:body][:height]).to be <= max_height.to_s
+      expect(response[:body][:height]).to be <= max_height.to_i
     end
 
     it 'supports the `format` param' do
@@ -152,7 +153,4 @@ feature 'App: Embedding' do
     BASE_URL.merge(path).to_s
   end
 
-  def https_scheme(url)
-    URI.parse(url).tap { |u| u.scheme = 'https' }.to_s
-  end
 end
