@@ -49,7 +49,7 @@ feature 'App: Embedding' do
       expect(response[:body][:provider_name]).to eq 'Media Archive'
       expect(response[:body][:provider_url]).to eq full_url('')
       expect(response[:body][:html]).to include '</iframe>'
-      expect(response[:body][:html]).to include 'src="' + full_url('/entries/924057ea-5f9a-4a81-85dc-aa067577d6f1/embedded?maxheight=403&maxwidth=620') + '"'
+      expect(response[:body][:html]).to include 'src="' + full_url('/entries/924057ea-5f9a-4a81-85dc-aa067577d6f1/embedded?height=403&width=620') + '"'
     end
 
     # example '`photo` type' # embed images?
