@@ -6,8 +6,11 @@ module Helpers
     end
 
     def login_as_database_user(login: 'adam', password: 'password')
-      click_link 'login_menu-tab-system'
-      within '#login_menu-pane-system' do
+      # if there are tabs, switch to system login
+      if all('#login_menu [role="tablist"]').first
+        click_link 'login_menu-tab-system'
+      end
+      within '#login_menu' do
         fill_in 'login', with: login
         fill_in 'password', with: password
         find('[type=submit]').click
