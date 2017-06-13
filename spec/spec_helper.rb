@@ -7,10 +7,12 @@ require 'logger'
 require 'faker'
 require 'helpers/misc'
 require 'helpers/configuration_management'
+require 'helpers/mock_api_client'
 
 RSpec.configure do |config|
   config.include Helpers::Misc
   config.include Helpers::ConfigurationManagement
+  config.include Helpers::MockApiClient
 
   port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].presence || '3000')
 

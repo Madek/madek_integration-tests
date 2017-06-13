@@ -60,3 +60,12 @@ tasks:
       test:
         start_when:
           config is prepared: { script_key: prepare-config }
+
+  spec/features/api-client-with-cors-and-token_spec.rb:
+    scripts:
+      prepare-config:
+        body: |
+          sed -i 's/cors_enabled: false/cors_enabled: yes/' ./api/config/settings.yml
+      test:
+        start_when:
+          config is prepared: { script_key: prepare-config }

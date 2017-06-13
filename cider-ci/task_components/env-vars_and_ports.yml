@@ -19,3 +19,6 @@ ports:
   WEBAPP_HTTP_PORT:
     min: 3100
     max: 3999
+  API_NREPL_PORT:
+    min: 7000
+    max: 7999
