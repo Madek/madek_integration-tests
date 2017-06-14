@@ -1,3 +1,5 @@
+require 'nrepl'
+
 module Helpers
   module Misc
     def api_click_on_relation_method(rel_name, method_name)
@@ -23,5 +25,20 @@ module Helpers
         value
       end
     end
+
+    def api_nrepl(code)
+      port = Integer(ENV['EXECUTOR_NREPL_PORT'].presence || 7802)
+      _eval_clj_via_nrepl(port, code)
+    end
+
   end
+end
+
+private
+
+def _eval_clj_via_nrepl(port, code)
+  repl = Nrepl::Repl.connect(port)
+  res = repl.eval code
+  res.select{|r| r["ex"].present?}.map{|err| raise err["ex"]} # if failed
+  res.map {|o| o['value']}.compact.first # if ok
 end
