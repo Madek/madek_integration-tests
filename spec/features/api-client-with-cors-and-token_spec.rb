@@ -45,6 +45,7 @@ def get_new_user_api_token(user)
   visit '/'
   login_as_database_user(login: user)
   within('.app-body-sidebar') { click_on 'Tokens' }
+  wait_until(5){page.has_content? 'Neuen Token erstellen'}
   click_on 'Neuen Token erstellen'
   click_on 'Token anlegen'
   token = find('samp.code').text

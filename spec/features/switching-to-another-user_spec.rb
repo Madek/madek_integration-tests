@@ -5,7 +5,7 @@ feature 'Switching to another user' do
     visit '/'
     login_as_database_user
     visit '/admin/users'
-    expect(page).to have_content 'Madek Admin'
+    wait_until(10){page.has_content? 'Madek Admin'}
     expect(page).to have_content 'Users'
     first('button', text: 'Switch to...').click
     expect(page).to have_content 'Media Archive'

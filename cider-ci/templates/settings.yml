@@ -25,3 +25,8 @@ services:
       context: ""
       sub_context: /api
       ssl: false
+
+    nrepl:
+      port: {{API_NREPL_PORT}}
+      bind: "127.0.0.1"
+      enabled: true

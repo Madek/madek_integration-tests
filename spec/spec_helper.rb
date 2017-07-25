@@ -14,14 +14,21 @@ RSpec.configure do |config|
   config.include Helpers::ConfigurationManagement
   config.include Helpers::MockApiClient
 
-  port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].presence || '3000')
+  port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].presence || '3100')
 
   Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, js_errors: false)
   end
 
-  if ENV['FIREFOX_ESR_PATH'].present?
-    Selenium::WebDriver::Firefox.path = ENV['FIREFOX_ESR_PATH']
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(
+      app,
+      browser: :firefox,
+      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.firefox(marionette: false))
+  end
+
+  if ENV['FIREFOX_ESR_45_PATH'].present?
+    Selenium::WebDriver::Firefox.path = ENV['FIREFOX_ESR_45_PATH']
   end
 
   Capybara.app_host = "http://localhost:#{port}"

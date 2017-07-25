@@ -31,7 +31,7 @@ feature 'MediaEntry Up- and download.' do
       find('.button-primary', text: 'Medien importieren').click
     end
 
-    expect(current_path).to eq '/my/upload'
+    wait_until { current_path == '/my/upload'}
 
     visit('/my/upload?nojs=1')
 
@@ -48,7 +48,7 @@ feature 'MediaEntry Up- and download.' do
     # end
     #
     # click_on 'Speichern'
-    # 
+    #
     # accept_prompt
 
     visit('/api/browser/index.html')

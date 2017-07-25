@@ -18,9 +18,9 @@ scripts:
       settings_local['database']['subname']= "//localhost:#{ENV['PGPORT']}/#{ENV['DATABASE']}"
       settings_local['database']['user']= ENV['PGUSER']
       settings_local['database']['password']= ENV['PGPASSWORD']
-      settings_local['nrepl']||= {}
-      settings_local['nrepl']['enabled']= true
-      settings_local['nrepl']['port']= Integer(ENV['API_NREPL_PORT'])
+      settings_local['services']['api']['nrepl']||= {}
+      settings_local['services']['api']['nrepl']['enabled']= true
+      settings_local['services']['api']['nrepl']['port']= Integer(ENV['API_NREPL_PORT'])
       IO.write 'config/settings.local.yml', settings_local.to_yaml
 
   precompile-api:

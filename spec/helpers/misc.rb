@@ -3,6 +3,7 @@ require 'nrepl'
 module Helpers
   module Misc
     def api_click_on_relation_method(rel_name, method_name)
+      wait_until(10){first("[data-relation-name=\"#{rel_name}\"]")}
       find("[data-relation-name=\"#{rel_name}\"]")
         .find('.methods').find('a, button', text: method_name).click
     end
@@ -27,7 +28,7 @@ module Helpers
     end
 
     def api_nrepl(code)
-      port = Integer(ENV['EXECUTOR_NREPL_PORT'].presence || 7802)
+      port = Integer(ENV['API_NREPL_PORT'].presence || 7802)
       _eval_clj_via_nrepl(port, code)
     end
 
