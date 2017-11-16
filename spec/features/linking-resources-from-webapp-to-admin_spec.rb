@@ -10,14 +10,28 @@ describe 'Linking resources from webapp to admin', type: :feature do
     visit '/entries'
     all('.ui-resource .media-entry > a').first.click
 
-    find('.ui-body-title-actions .dropdown-toggle').click
+    go_to_admin
 
-    admin_window = window_opened_by do
-      find('.dropdown.open a', text: 'Zeige im Admin-Interface').click
-    end
+    expect(page).to have_content 'Madek Admin'
+    expect(page).to have_content 'Media Entry:'
+  end
 
-    within_window admin_window do
-      expect(page).to have_content 'Media Entry:'
-    end
+  it 'goes to a correct collection page' do
+    visit '/sets'
+    all('.ui-resource .media-set > a').first.click
+
+    go_to_admin
+
+    expect(page).to have_content 'Madek Admin'
+    expect(page).to have_content 'Sets :'
+  end
+
+  def go_to_admin
+    anchor = find(
+      '.ui-body-title-actions .dropdown a',
+      text: 'Zeige im Admin-Interface',
+      visible: false)
+
+    visit anchor[:href]
   end
 end
