@@ -44,12 +44,12 @@ feature 'App: Embedding' do
         expect(response[:body][key]).to be_present, "missing prop: #{key}"
       end
       expect(response[:body][:title]).to eq 'A public movie to test public viewing'
-      expect(response[:body][:width]).to eq 620
-      expect(response[:body][:height]).to eq 403
+      expect(response[:body][:width]).to eq 640
+      expect(response[:body][:height]).to eq 360
       expect(response[:body][:provider_name]).to eq 'Media Archive'
       expect(response[:body][:provider_url]).to eq full_url('')
       expect(response[:body][:html]).to include '</iframe>'
-      expect(response[:body][:html]).to include 'src="' + full_url('/entries/924057ea-5f9a-4a81-85dc-aa067577d6f1/embedded?height=403&width=620') + '"'
+      expect(response[:body][:html]).to include 'src="' + full_url('/entries/924057ea-5f9a-4a81-85dc-aa067577d6f1/embedded?height=360&width=640') + '"'
     end
 
     # example '`photo` type' # embed images?
@@ -88,12 +88,19 @@ feature 'App: Embedding' do
       expect(response[:body][:height]).to be <= max_height.to_i
     end
 
-    it 'supports the `format` param' do
-      response = get_json(
-        set_params_for_url(
-          API_URL, format: 'json', url: full_url(VIDEO_ENTRY)))
+    it 'does support XML format' do
+      response_xml = Net::HTTP.get_response(URI.parse(set_params_for_url(
+          (API_URL + '.xml'), url: full_url(VIDEO_ENTRY))))
 
-      expect_valid_oembed_response(response)
+      response_json = get_json(
+        set_params_for_url(API_URL, url: full_url(VIDEO_ENTRY)))
+
+      xml_body = stringify_values(
+        Hash.from_xml(response_xml.body).deep_symbolize_keys[:oembed])
+      json_body = stringify_values(response_json[:body])
+
+      expect_valid_oembed_response(response_json)
+      expect(xml_body).to eq(json_body), 'XML format has same content as JSON'
     end
 
     # errors:
@@ -116,12 +123,6 @@ feature 'App: Embedding' do
       expect(response[:status]).to be 401
     end
 
-    it 'does not support XML format, returns correct error' do
-      response = get_json(
-        set_params_for_url(
-          API_URL, url: full_url(VIDEO_ENTRY), format: 'xml'))
-      expect(response[:status]).to be 501
-    end
   end
 
   private
@@ -151,6 +152,10 @@ feature 'App: Embedding' do
 
   def full_url(path)
     BASE_URL.merge(path).to_s
+  end
+
+  def stringify_values(obj)
+    obj.map {|k,v| [k, v.to_s]}.to_h
   end
 
 end
