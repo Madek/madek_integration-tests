@@ -23,7 +23,6 @@ scripts:
     body: |
       set -eux
       cd ${ADMIN_WEBAPP_DIR}
-      export PATH=$(pwd)/vendor/jruby/bin/:$PATH
       bundle exec rails s -p  ${ADMIN_WEBAPP_HTTP_PORT}
     start_when:
       the db has been created:
