@@ -23,9 +23,9 @@ scripts:
   run-admin-webapp:
     body: |
       set -eux
+      export PATH=~/.rubies/$RUBY/bin:$PATH
       cd ${ADMIN_WEBAPP_DIR}
-      export PATH=$(pwd)/vendor/jruby/bin/:$PATH
-      bundle exec rails s -p  ${ADMIN_WEBAPP_HTTP_PORT}
+      PORT=${ADMIN_WEBAPP_HTTP_PORT} bundle exec rails s
     start_when:
       the db has been created:
         script_key: create-database
