@@ -16,6 +16,9 @@ task_defaults:
 
   load: 3
 
+  traits:
+    Firefox ESR 60: yes
+
   git_options:
     submodules:
       include_match: ^.+$
