@@ -10,7 +10,9 @@ scripts:
       #!/usr/bin/env bash
       set -eux
       createdb "$DATABASE"
-      pg_restore --disable-triggers --exit-on-error -x -O -d "${DATABASE}" webapp/datalayer/db/personas.pgbin
+      psql -a -d "${DATABASE}" -f webapp/datalayer/db/structure.sql
+      psql -a -d "${DATABASE}" -c "DELETE FROM schema_migrations" 
+      pg_restore --data-only --disable-triggers --exit-on-error -x -O -d "${DATABASE}" webapp/datalayer/db/personas.pgbin
 
   test:
     start_when:
