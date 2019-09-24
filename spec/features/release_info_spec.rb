@@ -18,7 +18,7 @@ describe 'webapp: release info', type: :feature do
   it 'shows deploy and release info on releases page' do
     visit '/release'
 
-    expect(find('.ui-container.bright').text)
+    expect(find('.ui-container.bright').text.gsub(/\s+/, ' ').strip)
       .to eq <<-TEXT.gsub(/\s+/, ' ').strip
 
         Deployment: Freitag, 5. August 2016 23:03,
