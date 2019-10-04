@@ -16,19 +16,32 @@ feature 'App: Embedding' do
   API_URL = BASE_URL.merge('/oembed').to_s.freeze
 
   example 'oEmbed discovery link from Resource detail page' do
-    LINK_TYPE = 'application/json+oembed'.freeze
-    EXPECTED_LINK = {
-      rel: 'alternate',
-      href: full_url('/oembed?url=%2Fentries%2F924057ea-5f9a-4a81-85dc-aa067577d6f1'),
-      title: 'A public movie to test public viewing oEmbed Profile'
-    }.freeze
+    EXPECTED_LINKS = [
+      {
+        type: 'application/json+oembed',
+        attrs: {
+          rel: 'alternate',
+          href: full_url('/oembed?url=%2Fentries%2F924057ea-5f9a-4a81-85dc-aa067577d6f1'),
+          title: 'oEmbed Profile: JSON'
+        }
+      },
+      {
+        type: 'application/xml+oembed',
+        attrs: {
+          rel: 'alternate',
+          href: full_url('/oembed.xml?url=%2Fentries%2F924057ea-5f9a-4a81-85dc-aa067577d6f1'),
+          title: 'oEmbed Profile: XML'
+        }
+      }
+    ].freeze
 
     visit VIDEO_ENTRY
-    node = find("head link[type=\"#{LINK_TYPE}\"]", visible: false)
-    expect(node).to be
-    link = [:rel, :href, :title].map { |prop| [prop, node[prop]] }.to_h
-
-    expect(link).to eq(EXPECTED_LINK)
+    EXPECTED_LINKS.each do |link|
+      node = find("head link[type=\"#{link[:type]}\"]", visible: false)
+      expect(node).to be
+      link_attrs = [:rel, :href, :title].map { |prop| [prop, node[prop]] }.to_h
+      expect(link_attrs).to eq(link[:attrs])
+    end
   end
 
   describe 'oEmbed API:' do
