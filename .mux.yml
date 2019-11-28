@@ -1,6 +1,6 @@
 name: madek/integration-tests_proxy
 windows:
-  '2':
+  3:
     name: apache2
     command: |
       while true; do
@@ -9,6 +9,6 @@ windows:
           /opt/local/sbin/httpd -d reverse-proxy -f conf/httpd.conf -e info -DFOREGROUND
         sleep 1
       done
-  '7':
+  7:
     name: test
     command: bundle exec rspec spec
