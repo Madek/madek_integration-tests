@@ -48,6 +48,8 @@ feature 'App: Embedding' do
     # types:
     example '`video` type' do
       REQUIRED_KEYS = [:html, :width, :height, :title].freeze
+      expected_src_attr = CGI.escapeHTML('/entries/924057ea-5f9a-4a81-85dc-aa067577d6f1/embedded?height=360&width=640')
+
       response = get_json(
         set_params_for_url(
           API_URL, url: full_url(VIDEO_ENTRY)))
@@ -62,7 +64,7 @@ feature 'App: Embedding' do
       expect(response[:body][:provider_name]).to eq 'Media Archive'
       expect(response[:body][:provider_url]).to eq full_url('')
       expect(response[:body][:html]).to include '</iframe>'
-      expect(response[:body][:html]).to include 'src="' + full_url('/entries/924057ea-5f9a-4a81-85dc-aa067577d6f1/embedded?height=360&width=640') + '"'
+      expect(response[:body][:html]).to include 'src="' + full_url(expected_src_attr) + '"'
     end
 
     # example '`photo` type' # embed images?
