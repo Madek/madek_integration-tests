@@ -11,7 +11,7 @@ describe 'webapp: release info', type: :feature do
     visit '/'
 
     info = first('.ui-footer-copy a')
-    expect(info.text).to eq 'Madek v1.0.0-1 Second'
+    expect(info.text).to eq 'Madek 2.0.0'
     expect(info[:href]).to eq "#{Capybara.app_host}/release"
   end
 
@@ -24,11 +24,14 @@ describe 'webapp: release info', type: :feature do
         Deployment: Freitag, 5. August 2016 23:03,
         Build: Freitag, 5. August 2016 14:35
 
+        Madek 2.0.0
+        third release
+        Changes: releases do not have name/info_url anymore!
+
+        Vorherige Versionen
         Madek v1.0.0-1 \"Second\"
         second release (pre)
         Changes: fix: foo
-
-        Vorherige Versionen
         Madek 1.0.0 \"First\"
         first release
         Changes: feat: foo fix: bar
