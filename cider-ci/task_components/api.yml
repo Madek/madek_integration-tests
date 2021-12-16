@@ -1,6 +1,5 @@
 traits:
-  JDK 8: true
-  Leiningen 2: true
+  OpenJDK: true
   curl: true
 
 environment_variables:
@@ -8,7 +7,7 @@ environment_variables:
 
 scripts:
 
-  configure-api-database:
+  api-configure:
     body: |
       #!/usr/bin/env ruby
 
@@ -23,25 +22,24 @@ scripts:
       settings_local['services']['api']['nrepl']['port']= Integer(ENV['API_NREPL_PORT'])
       IO.write 'config/settings.local.yml', settings_local.to_yaml
 
-  precompile-api:
-    exclusive_executor_resource: precompile-madek-api
-    body: ${API_DIR}/cider-ci/bin/compile_uberjar.sh
+  api-uberjar:
+    exclusive_executor_resource: madek-api-uberjar
+    body: |
+      set -eux
+      ${API_DIR}/bin/uberjar
 
-  run-api:
+  api-run:
     body: |
       set -eux
       cd ${API_DIR}
-      export JAVA_HOME=${OPENJDK8_HOME}
-      export PATH=${JAVA_HOME}/bin:${PATH}
-      export CLASSPATH="../config:target/api.jar"
-      java madek.api.main
+      java -jar madek-api.jar
     start_when:
       the db has been created:
         script_key: create-database
-      the db has been configure:
-        script_key: configure-api-database
-      the api has been precompiled:
-        script_key: precompile-api
+      the api has been configure:
+        script_key: api-configure
+      the api has been compiled:
+        script_key: api-uberjar
 
   api-is-running:
     body: |
@@ -49,8 +47,8 @@ scripts:
       until curl --silent --fail --user x:secret -I  \
         http://localhost:${API_HTTP_PORT}/api; do sleep 1; done
     start_when:
-      run-api is executing:
-        script_key: run-api
+      api-run is executing:
+        script_key: api-run
         states: [executing]
 
   test:
@@ -58,7 +56,7 @@ scripts:
       the api is running:
         script_key: api-is-running
 
-  shutdown-api:
+  api-shutdown:
     body: |
       set -eux
       curl -X POST --silent --fail --user x:secret -I  \

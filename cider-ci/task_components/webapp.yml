@@ -1,14 +1,12 @@
 traits:
-  JDK 8: true
   curl: true
 
 environment_variables:
   WEBAPP_DIR: '{{CIDER_CI_WORKING_DIR}}/webapp'
 
-
 scripts:
 
-  configure-webapp-database:
+  webapp-configure:
     body: |
       #!/usr/bin/env ruby
       require 'yaml'
@@ -20,7 +18,7 @@ scripts:
       rails_db_conf[ENV['RAILS_ENV']]['pool'] = 5
       IO.write db_config_file, rails_db_conf.to_yaml
 
-  run-webapp:
+  webapp-run:
     body: |
       set -eux
       export PATH=~/.rubies/$RUBY/bin:$PATH
@@ -30,7 +28,7 @@ scripts:
       the db has been created:
         script_key: create-database
       the db has been configure:
-        script_key: configure-webapp-database
+        script_key: webapp-configure
 
   webapp-is-running:
     timeout: 2 Minutes
@@ -40,8 +38,8 @@ scripts:
         http://localhost:${WEBAPP_HTTP_PORT}/status;
       do sleep 1; done
     start_when:
-      run-webapp is in executing state:
-        script_key: run-webapp
+      webapp-run is in executing state:
+        script_key: webapp-run
         states: [executing]
 
   test:
@@ -49,7 +47,7 @@ scripts:
       the webapp is running:
         script_key: webapp-is-running
 
-  shutdown-webapp:
+  webapp-shutdown:
     timeout: 5 Seconds
     body: |
       set -eux
