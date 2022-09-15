@@ -16,7 +16,6 @@ feature 'MediaEntry Up- and download.' do
                      'DELETE FROM media_files;',
                      'DELETE FROM edit_sessions;',
                      'DELETE FROM collections;',
-                     'DELETE FROM filter_sets;',
                      'DELETE FROM media_entries;',
                      'DELETE FROM context_keys'].map do|cmd|
       Helpers::ConfigurationManagement.invoke_sql cmd
