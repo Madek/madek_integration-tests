@@ -1,7 +1,6 @@
 require 'capybara/rspec'
 require 'active_support/all'
 require 'selenium-webdriver'
-require 'capybara/poltergeist'
 require 'pry'
 require 'logger'
 require 'faker'
@@ -16,19 +15,16 @@ RSpec.configure do |config|
 
   port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].presence || '3100')
 
-  Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, js_errors: false)
-  end
+  firefox_bin_path =
+    Pathname.new(`asdf where firefox`.strip).join('bin/firefox').expand_path
+  Selenium::WebDriver::Firefox.path = firefox_bin_path.to_s
 
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(
       app,
       browser: :firefox,
-      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.firefox(marionette: false))
-  end
-
-  if ENV['FIREFOX_ESR_45_PATH'].present?
-    Selenium::WebDriver::Firefox.path = ENV['FIREFOX_ESR_45_PATH']
+      desired_capabilities:
+        Selenium::WebDriver::Remote::Capabilities.firefox(marionette: false))
   end
 
   Capybara.app_host = "http://localhost:#{port}"

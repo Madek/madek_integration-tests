@@ -7,6 +7,7 @@ task_defaults:
     - cider-ci/task_components/config.yml
     - cider-ci/task_components/database.yml
     - cider-ci/task_components/env-vars_and_ports.yml
+    - cider-ci/task_components/firefox.yml
     - cider-ci/task_components/reverse-proxy.yml
     - cider-ci/task_components/webapp.yml
 
@@ -40,7 +41,6 @@ task_defaults:
       timeout: 3 Minutes
       body: |
         set -eux
-        export PATH=~/.rubies/$RUBY/bin:$PATH
         cd integration-tests
         mkdir -p log
         xvfb-run -a -e log/xvfb.log \
