@@ -22,9 +22,7 @@ RSpec.configure do |config|
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(
       app,
-      browser: :firefox,
-      desired_capabilities:
-        Selenium::WebDriver::Remote::Capabilities.firefox(marionette: false))
+      browser: :firefox)
   end
 
   Capybara.app_host = "http://localhost:#{port}"

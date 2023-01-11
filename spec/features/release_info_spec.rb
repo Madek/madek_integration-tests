@@ -18,24 +18,25 @@ describe 'webapp: release info', type: :feature do
   it 'shows deploy and release info on releases page' do
     visit '/release'
 
+    expected_text = <<~TEXT.strip
+      Deployment: Freitag, 5. August 2016 23:03, Build: Freitag, 5. August 2016 14:35
+      Madek 2.0.0
+      third release
+      Changes:
+      releases do not have name/info_url anymore!
+      Vorherige Versionen
+      Madek v1.0.0-1 \"Second\"
+      second release (pre)
+      Changes:
+      fix: foo
+      Madek 1.0.0 \"First\"
+      first release
+      Changes:
+      feat: foo
+      fix: bar
+    TEXT
+
     expect(find('.ui-container.bright').text)
-      .to eq <<-TEXT.gsub(/\s+/, ' ').strip
-
-        Deployment: Freitag, 5. August 2016 23:03,
-        Build: Freitag, 5. August 2016 14:35
-
-        Madek 2.0.0
-        third release
-        Changes: releases do not have name/info_url anymore!
-
-        Vorherige Versionen
-        Madek v1.0.0-1 \"Second\"
-        second release (pre)
-        Changes: fix: foo
-        Madek 1.0.0 \"First\"
-        first release
-        Changes: feat: foo fix: bar
-
-      TEXT
+      .to eq expected_text
   end
 end
