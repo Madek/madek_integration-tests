@@ -1,0 +1,7 @@
+---
+"./spec/features/api-with-cors-disabled_spec.rb[1:1]":
+  name: "./spec/features/api-with-cors-disabled_spec.rb[1:1]"
+  description: API configured does not support CORS if disabled in settings
+  environment_variables:
+    RSPEC_NAME: "./spec/features/api-with-cors-disabled_spec.rb:7"
+    RSPEC_TEST: "./spec/features/api-with-cors-disabled_spec.rb[1:1]"

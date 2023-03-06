@@ -1,4 +1,4 @@
-name: madek/integration-tests_proxy
+name: MADEK/madek/integration-tests
 windows:
   3:
     name: apache2

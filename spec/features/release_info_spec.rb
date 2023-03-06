@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'webapp: release info', type: :feature do
+describe 'webapp: release info', type: :feature, ci_group: :release_info do
   before :example do
     # check needed config file, see spec setup for fixtures
     raise 'missing config!' unless File.exist?('../config/releases.yml')

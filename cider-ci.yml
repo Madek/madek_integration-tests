@@ -1,0 +1,25 @@
+jobs:
+
+  check-feature-tasks:
+    name: Check if feature tasks are up to date
+    run_when: &DEFAULT_TRIGGERS
+      always:
+        type: branch
+        include_match: '^.+$'
+    context:
+      include: cider-ci/context-components/check-feature-tasks.yml
+
+
+  all-tests:
+    name: 'All tests'
+    description: |
+      This job depends on all unit jobs that need to pass.
+    priority: 999 # "empty" job = high priority
+    context:
+      task: "echo '✔︎ All dependencies have passed' ; exit 0"
+    depends_on: &ALL_DEPS
+      'check-feature-tasks passed':
+        type: job
+        job_key: check-feature-tasks
+        states: [passed]
+    run_when: *ALL_DEPS

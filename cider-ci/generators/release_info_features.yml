@@ -1,0 +1,13 @@
+---
+"./spec/features/release_info_spec.rb[1:1]":
+  name: "./spec/features/release_info_spec.rb[1:1]"
+  description: 'webapp: release info shows version info in footer'
+  environment_variables:
+    RSPEC_NAME: "./spec/features/release_info_spec.rb:10"
+    RSPEC_TEST: "./spec/features/release_info_spec.rb[1:1]"
+"./spec/features/release_info_spec.rb[1:2]":
+  name: "./spec/features/release_info_spec.rb[1:2]"
+  description: 'webapp: release info shows deploy and release info on releases page'
+  environment_variables:
+    RSPEC_NAME: "./spec/features/release_info_spec.rb:18"
+    RSPEC_TEST: "./spec/features/release_info_spec.rb[1:2]"

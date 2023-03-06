@@ -2,7 +2,7 @@ require 'spec_helper'
 
 BASE_URL = URI.parse(Capybara.app_host).freeze
 
-describe 'API configured', type: :feature do
+describe 'API configured', type: :feature, ci_group: :cors_disabled do
 
   it 'does not support CORS if disabled in settings' do
    is_cors_enabled = api_nrepl \
