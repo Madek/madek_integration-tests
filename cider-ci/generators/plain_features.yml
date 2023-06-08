@@ -23,6 +23,13 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/api-doc-links_spec.rb:4"
     RSPEC_TEST: "./spec/features/api-doc-links_spec.rb[1:1]"
+"./spec/features/auth-new-session_spec.rb[1:1]":
+  name: "./spec/features/auth-new-session_spec.rb[1:1]"
+  description: Sign in via new auth service sign in from new auth results in a valid
+    session in webapp
+  environment_variables:
+    RSPEC_NAME: "./spec/features/auth-new-session_spec.rb:4"
+    RSPEC_TEST: "./spec/features/auth-new-session_spec.rb[1:1]"
 "./spec/features/basic_spec.rb[1:1]":
   name: "./spec/features/basic_spec.rb[1:1]"
   description: The Webapp (UI)  is up and running.
