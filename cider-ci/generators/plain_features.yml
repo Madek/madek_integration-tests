@@ -114,57 +114,6 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/media-file_up-and-download_spec.rb:10"
     RSPEC_TEST: "./spec/features/media-file_up-and-download_spec.rb[1:1]"
-"./spec/features/oembed_spec.rb[1:1]":
-  name: "./spec/features/oembed_spec.rb[1:1]"
-  description: 'App: Embedding oEmbed discovery link from Resource detail page'
-  environment_variables:
-    RSPEC_NAME: "./spec/features/oembed_spec.rb:18"
-    RSPEC_TEST: "./spec/features/oembed_spec.rb[1:1]"
-"./spec/features/oembed_spec.rb[1:2:1]":
-  name: "./spec/features/oembed_spec.rb[1:2:1]"
-  description: 'App: Embedding oEmbed API: `video` type'
-  environment_variables:
-    RSPEC_NAME: "./spec/features/oembed_spec.rb:49"
-    RSPEC_TEST: "./spec/features/oembed_spec.rb[1:2:1]"
-"./spec/features/oembed_spec.rb[1:2:2]":
-  name: "./spec/features/oembed_spec.rb[1:2:2]"
-  description: 'App: Embedding oEmbed API: supports the `maxwidth` param'
-  environment_variables:
-    RSPEC_NAME: "./spec/features/oembed_spec.rb:86"
-    RSPEC_TEST: "./spec/features/oembed_spec.rb[1:2:2]"
-"./spec/features/oembed_spec.rb[1:2:3]":
-  name: "./spec/features/oembed_spec.rb[1:2:3]"
-  description: 'App: Embedding oEmbed API: supports the `maxheight` param'
-  environment_variables:
-    RSPEC_NAME: "./spec/features/oembed_spec.rb:96"
-    RSPEC_TEST: "./spec/features/oembed_spec.rb[1:2:3]"
-"./spec/features/oembed_spec.rb[1:2:4]":
-  name: "./spec/features/oembed_spec.rb[1:2:4]"
-  description: 'App: Embedding oEmbed API: does support XML format'
-  environment_variables:
-    RSPEC_NAME: "./spec/features/oembed_spec.rb:106"
-    RSPEC_TEST: "./spec/features/oembed_spec.rb[1:2:4]"
-"./spec/features/oembed_spec.rb[1:2:5]":
-  name: "./spec/features/oembed_spec.rb[1:2:5]"
-  description: 'App: Embedding oEmbed API: returns error when URL in url `param` is
-    not supported'
-  environment_variables:
-    RSPEC_NAME: "./spec/features/oembed_spec.rb:123"
-    RSPEC_TEST: "./spec/features/oembed_spec.rb[1:2:5]"
-"./spec/features/oembed_spec.rb[1:2:6]":
-  name: "./spec/features/oembed_spec.rb[1:2:6]"
-  description: 'App: Embedding oEmbed API: returns error when resource is not found
-    by url `param`'
-  environment_variables:
-    RSPEC_NAME: "./spec/features/oembed_spec.rb:129"
-    RSPEC_TEST: "./spec/features/oembed_spec.rb[1:2:6]"
-"./spec/features/oembed_spec.rb[1:2:7]":
-  name: "./spec/features/oembed_spec.rb[1:2:7]"
-  description: 'App: Embedding oEmbed API: only supports "public" resources, returns
-    correct error'
-  environment_variables:
-    RSPEC_NAME: "./spec/features/oembed_spec.rb:135"
-    RSPEC_TEST: "./spec/features/oembed_spec.rb[1:2:7]"
 "./spec/features/switching-to-another-user_spec.rb[1:1]":
   name: "./spec/features/switching-to-another-user_spec.rb[1:1]"
   description: Switching to another user redirect to an user's archive
