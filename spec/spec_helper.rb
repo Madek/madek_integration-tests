@@ -15,14 +15,17 @@ RSpec.configure do |config|
 
   port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].presence || '3100')
 
-  firefox_bin_path =
-    Pathname.new(`asdf where firefox`.strip).join('bin/firefox').expand_path
+  firefox_bin_path = Pathname.new(`asdf where firefox`.strip).join('bin/firefox').expand_path
   Selenium::WebDriver::Firefox.path = firefox_bin_path.to_s
 
+  profile = Selenium::WebDriver::Firefox::Profile.new
+  profile['moz:firefoxOptions.binary'] = Selenium::WebDriver::Firefox.path
+  opts = Selenium::WebDriver::Firefox::Options.new(profile: profile)
+
   Capybara.register_driver :selenium do |app|
-    Capybara::Selenium::Driver.new(
-      app,
-      browser: :firefox)
+    Capybara::Selenium::Driver.new(app,
+                                   browser: :firefox,
+                                   options: opts)
   end
 
   Capybara.app_host = "http://localhost:#{port}"
