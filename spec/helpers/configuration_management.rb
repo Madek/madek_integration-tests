@@ -28,6 +28,11 @@ module Helpers
           headers: { content_type:  'application/sql' })
         request.execute
       end
+
+      def execute_sql(sql_string)
+        response = invoke_sql(sql_string)
+        JSON.parse(response.body).deep_symbolize_keys[:result]
+      end
     end
   end
 end

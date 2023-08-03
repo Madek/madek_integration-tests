@@ -84,6 +84,12 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/changing_translations_spec.rb:80"
     RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:2:2]"
+"./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]":
+  name: "./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]"
+  description: Disabling all meta data edit tab for power users works
+  environment_variables:
+    RSPEC_NAME: "./spec/features/edit_meta_data_power_users_group_spec.rb:4"
+    RSPEC_TEST: "./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]"
 "./spec/features/linking-from-admin-people-to-webapp-people_spec.rb[1:1]":
   name: "./spec/features/linking-from-admin-people-to-webapp-people_spec.rb[1:1]"
   description: Linking from admin people to webapp people goes to a correct person
