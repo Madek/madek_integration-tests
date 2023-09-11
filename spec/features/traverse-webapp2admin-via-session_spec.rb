@@ -6,7 +6,7 @@ describe 'Traversing from the UI to the Admin UI when signed in',
     visit '/'
     expect(page).to have_content 'Media Archive'
     login_as_database_user
-    expect(page).to have_content 'Sie haben sich angemeldet.'
+    expect(page).to have_content 'Mein Archiv'
     visit '/admin'
     expect(page).to have_content 'Madek Admin'
   end

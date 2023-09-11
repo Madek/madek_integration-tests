@@ -9,15 +9,10 @@ module Helpers
     end
 
     def login_as_database_user(login: 'adam', password: 'password')
-      # if there are tabs, switch to system login
-      if all('#login_menu [role="tablist"]').first
-        click_link 'login_menu-tab-system'
-      end
-      within '#login_menu' do
-        fill_in 'login', with: login
-        fill_in 'password', with: password
-        find('[type=submit]').click
-      end
+      fill_in 'email-or-login', with: login
+      click_on "Anmelden"
+      fill_in 'password', with: password
+      click_on "Anmelden"
     end
 
     def wait_until(wait_time = 60)

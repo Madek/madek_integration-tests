@@ -24,7 +24,7 @@ feature 'MediaEntry Up- and download.' do
     visit '/'
     expect(page).to have_content 'Media Archive'
     login_as_database_user
-    expect(page).to have_content 'Sie haben sich angemeldet.'
+    expect(page).to have_content 'Mein Archiv'
 
     within('.ui-body-title-actions') do
       find('.button-primary', text: 'Medien importieren').click

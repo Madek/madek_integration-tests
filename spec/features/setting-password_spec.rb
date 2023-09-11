@@ -23,12 +23,10 @@ feature 'Password' do
       click_link 'login_menu-tab-system'
     end
 
-    within '#login_menu' do
-      fill_in 'login', with: 'Adam'
-      fill_in 'password', with: 'new password'
-      find('[type=submit]').click
-    end
-
+    fill_in 'email-or-login', with: 'Adam'
+    click_on 'Anmelden'
+    fill_in 'password', with: 'new password'
+    click_on "Anmelden"
 
     wait_until { current_path == '/my'}
 

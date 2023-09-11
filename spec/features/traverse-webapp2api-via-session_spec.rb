@@ -6,7 +6,7 @@ describe 'Traversing from the UI to the API browser when signed in',
     visit '/'
     expect(page).to have_content 'Media Archive'
     login_as_database_user
-    expect(page).to have_content 'Sie haben sich angemeldet.'
+    expect(page).to have_content 'Mein Archiv'
     visit '/api/browser/index.html#/api'
     wait_until { page.has_content? 'API Browser' }
     wait_until { page.has_content? 'Relations' }
