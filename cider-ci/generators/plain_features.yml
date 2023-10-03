@@ -126,6 +126,12 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/modifying-core-meta-key_spec.rb:4"
     RSPEC_TEST: "./spec/features/modifying-core-meta-key_spec.rb[1:1]"
+"./spec/features/setting-password_spec.rb[1:1]":
+  name: "./spec/features/setting-password_spec.rb[1:1]"
+  description: Password resetting a users password
+  environment_variables:
+    RSPEC_NAME: "./spec/features/setting-password_spec.rb:4"
+    RSPEC_TEST: "./spec/features/setting-password_spec.rb[1:1]"
 "./spec/features/switching-to-another-user_spec.rb[1:1]":
   name: "./spec/features/switching-to-another-user_spec.rb[1:1]"
   description: Switching to another user redirect to an user's archive
