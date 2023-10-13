@@ -18,7 +18,6 @@ describe 'Modifying core meta key', type: :feature do
     find('#meta_key_descriptions_en').set('newest description EN')
     find('#meta_key_hints_de').set('newest hint DE')
     find('#meta_key_hints_en').set('newest hint EN')
-    find('#meta_key_documentation_url').set('newest documentation url')
     find('#meta_key_documentation_urls_de').set('newest documentation url DE')
     find('#meta_key_documentation_urls_en').set('newest documentation url EN')
 
@@ -31,7 +30,6 @@ describe 'Modifying core meta key', type: :feature do
     expect(find('#meta_key_descriptions_en').value).to eq 'newest description EN'
     expect(find('#meta_key_hints_de').value).to eq 'newest hint DE'
     expect(find('#meta_key_hints_en').value).to eq 'newest hint EN'
-    expect(find('#meta_key_documentation_url').value).to eq 'newest documentation url DE'
     expect(find('#meta_key_documentation_urls_de').value).to eq 'newest documentation url DE'
     expect(find('#meta_key_documentation_urls_en').value).to eq 'newest documentation url EN'
 
