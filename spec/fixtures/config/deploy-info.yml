@@ -1,12 +1,5 @@
 ---
 tree_id: abc123
-deployed: {time: "2016-08-05T23:03:23.156Z", is_release: true}
+deployed: {time: "2016-08-05T23:03:23.156Z"}
 commit_id: def456
 build_time: "2016-08-05T14:35:03.378Z"
-changes_since_release: |
-  api 12345..67890:
-    > feature
-
-  webapp 12345..67890:
-    > fix
-    > feature
