@@ -1,6 +1,8 @@
 include: 
   - path: cider-ci/context-components/env.yml
 task_defaults:
+  environment_variables:
+    RSPEC_DRY_RUN: 'yes'
   include:
   - path: cider-ci/task-components/ruby-setup.yml
 

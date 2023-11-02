@@ -3,10 +3,14 @@ require 'active_support/all'
 require 'selenium-webdriver'
 require 'pry'
 require 'logger'
-require 'faker'
 require 'helpers/misc'
 require 'helpers/configuration_management'
 require 'helpers/mock_api_client'
+
+if not ENV['RSPEC_DRY_RUN'].present?
+  require 'config/database'
+  require 'config/factories'
+end
 
 RSpec.configure do |config|
   config.include Helpers::Misc
@@ -41,6 +45,11 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do |example|
+    if not ENV['CIDER_CI_TRIAL_ID'].present?
+      db_clean
+      db_restore_data
+    end
+
     set_driver example
     Capybara.app_host = "http://localhost:#{port}"
     Capybara.server_port = port
