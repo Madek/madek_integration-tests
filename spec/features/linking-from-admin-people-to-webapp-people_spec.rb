@@ -10,7 +10,7 @@ describe 'Linking from admin people to webapp people', type: :feature do
 
     ui_window = window_opened_by do
       within 'table tbody tr:first-of-type' do
-        click_link 'Show in UI'
+        click_link 'Web-App'
       end
     end
 
