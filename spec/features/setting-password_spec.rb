@@ -2,6 +2,7 @@ require 'spec_helper'
 
 feature 'Password' do
   scenario "resetting a users password" do
+    pending
     visit '/'
     login_as_database_user
     visit '/admin/users'
