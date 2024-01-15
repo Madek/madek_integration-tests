@@ -17,7 +17,7 @@ feature 'Deactivating a user' do
     click_on("Abmelden")
     fill_in('email-or-login', with: "deact_user")
     click_on("Anmelden")
-    expect(page).to have_content("Einloggen nicht möglich mit diesem Benutzernamen")
+    expect(page).to have_content("Einloggen nicht möglich mit dieser E-Mail")
   end
 
   scenario "oneself" do
@@ -32,6 +32,6 @@ feature 'Deactivating a user' do
     expect(page).to have_selector("input[name='email-or-login']")
     fill_in("email-or-login", with: "adam")
     click_on("Anmelden")
-    expect(page).to have_content("Einloggen nicht möglich mit diesem Benutzernamen")
+    expect(page).to have_content("Einloggen nicht möglich mit dieser E-Mail")
   end
 end
