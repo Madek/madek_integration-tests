@@ -5,8 +5,8 @@ feature 'Deactivating a user' do
     visit '/'
     login_as_database_user
     visit "/admin/users/new_with_person"
-    fill_in("user_person_attributes_first_name", with: "Deact")
-    fill_in("user_person_attributes_last_name", with: "User")
+    fill_in("user_first_name", with: "Deact")
+    fill_in("user_last_name", with: "User")
     fill_in("user_login", with: "deact_user")
     fill_in("user_email", with: "deact_user@example.com") 
     fill_in("user_password", with: "password")
