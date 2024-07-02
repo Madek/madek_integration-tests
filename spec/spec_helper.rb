@@ -9,6 +9,7 @@ require 'helpers/mock_api_client'
 
 if not ENV['RSPEC_DRY_RUN'].present?
   require 'config/database'
+  require 'config/emails'
   require 'config/factories'
 end
 
