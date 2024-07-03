@@ -36,12 +36,18 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/auth-new-session_spec.rb:4"
     RSPEC_TEST: "./spec/features/auth-new-session_spec.rb[1:1]"
-"./spec/features/basic_spec.rb[1:1]":
-  name: "./spec/features/basic_spec.rb[1:1]"
-  description: The Webapp (UI)  is up and running.
+"./spec/features/basic_spec.rb[1:1:1]":
+  name: "./spec/features/basic_spec.rb[1:1:1]"
+  description: Basic smoke tests The Webapp (UI) is up and running.
   environment_variables:
-    RSPEC_NAME: "./spec/features/basic_spec.rb:4"
-    RSPEC_TEST: "./spec/features/basic_spec.rb[1:1]"
+    RSPEC_NAME: "./spec/features/basic_spec.rb:5"
+    RSPEC_TEST: "./spec/features/basic_spec.rb[1:1:1]"
+"./spec/features/basic_spec.rb[1:2:1]":
+  name: "./spec/features/basic_spec.rb[1:2:1]"
+  description: Basic smoke tests Mailing Setup works
+  environment_variables:
+    RSPEC_NAME: "./spec/features/basic_spec.rb:20"
+    RSPEC_TEST: "./spec/features/basic_spec.rb[1:2:1]"
 "./spec/features/changing-language_spec.rb[1:1]":
   name: "./spec/features/changing-language_spec.rb[1:1]"
   description: Changing language changes data ContextKey labels
