@@ -1,8 +1,8 @@
 require 'mail'
 
-def smtp_port
-  ENV.fetch('MADEK_MAIL_SMTP_PORT','33025')
-end
+MADEK_MAIL_SMTP_PORT = ENV.fetch('MADEK_MAIL_SMTP_PORT','33025')
+MADEK_MAIL_DIR = ENV['MADEK_MAIL_DIR'] || '../mail'
+FAKE_MAILBOX_DIR = "#{MADEK_MAIL_DIR}/tmp/fake-mailbox"
 
 RSpec.configure do |config|
   config.before :suite do
@@ -15,11 +15,14 @@ end
 
 private
 
+def setup_smtp_port
+  SmtpSetting.first.update(port: MADEK_MAIL_SMTP_PORT)
+  sleep 1.1 # due to memoized smtp settings in the mail app
+end
+
 def empty_mailbox
-  begin
-    Mail.delete_all
-  rescue
-  end
+  Mail.delete_all
+  system("rm -rf #{FAKE_MAILBOX_DIR}")
 end
 
 def setup_email_client

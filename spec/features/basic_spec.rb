@@ -15,6 +15,7 @@ describe 'Basic smoke tests' do
   context 'Mailing Setup' do
     before(:each) do
       SmtpSetting.first.update(is_enabled: true)
+      setup_smtp_port
     end
 
     it 'works' do
