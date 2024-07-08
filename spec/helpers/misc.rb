@@ -27,6 +27,10 @@ module Helpers
       _eval_clj_via_nrepl(port, code)
     end
 
+    def extract_uuid(str)
+      uuid_regex = /\b[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\b/
+      str[uuid_regex]
+    end
   end
 end
 
