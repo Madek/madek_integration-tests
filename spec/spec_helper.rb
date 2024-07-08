@@ -1,11 +1,12 @@
-require 'capybara/rspec'
 require 'active_support/all'
-require 'selenium-webdriver'
-require 'pry'
-require 'logger'
-require 'helpers/misc'
+require 'capybara/rspec'
 require 'helpers/configuration_management'
+require 'helpers/misc'
 require 'helpers/mock_api_client'
+require 'logger'
+require 'pry'
+require 'selenium-webdriver'
+require 'uuidtools'
 
 if not ENV['RSPEC_DRY_RUN'].present?
   require 'config/database'
