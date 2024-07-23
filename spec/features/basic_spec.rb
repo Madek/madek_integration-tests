@@ -19,6 +19,7 @@ describe 'Basic smoke tests' do
     end
 
     it 'works' do
+      puts "SMTP PORT: #{SmtpSetting.first.port}"
       user = User.find(login: 'normin')
       email = FactoryBot.create(:email, user_id: user.id)
       wait_until(5) do
