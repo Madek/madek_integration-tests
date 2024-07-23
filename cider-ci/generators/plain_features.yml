@@ -1,41 +1,41 @@
 ---
-"./spec/features/api-client-with-cors-and-token_spec.rb[1:1]":
-  name: "./spec/features/api-client-with-cors-and-token_spec.rb[1:1]"
-  description: Accessing the API as a web client works with CORS
-  environment_variables:
-    RSPEC_NAME: "./spec/features/api-client-with-cors-and-token_spec.rb:16"
-    RSPEC_TEST: "./spec/features/api-client-with-cors-and-token_spec.rb[1:1]"
-"./spec/features/api-client-with-cors-and-token_spec.rb[1:2]":
-  name: "./spec/features/api-client-with-cors-and-token_spec.rb[1:2]"
-  description: Accessing the API as a web client works with CORS and Token
-  environment_variables:
-    RSPEC_NAME: "./spec/features/api-client-with-cors-and-token_spec.rb:24"
-    RSPEC_TEST: "./spec/features/api-client-with-cors-and-token_spec.rb[1:2]"
-"./spec/features/api-client-with-cors-and-token_spec.rb[1:3]":
-  name: "./spec/features/api-client-with-cors-and-token_spec.rb[1:3]"
-  description: Accessing the API as a web client works with CORS and invalid Token
-  environment_variables:
-    RSPEC_NAME: "./spec/features/api-client-with-cors-and-token_spec.rb:35"
-    RSPEC_TEST: "./spec/features/api-client-with-cors-and-token_spec.rb[1:3]"
-"./spec/features/api-doc-links_spec.rb[1:1]":
-  name: "./spec/features/api-doc-links_spec.rb[1:1]"
-  description: API Docs in the API browser returns 200 for every doc link
-  environment_variables:
-    RSPEC_NAME: "./spec/features/api-doc-links_spec.rb:4"
-    RSPEC_TEST: "./spec/features/api-doc-links_spec.rb[1:1]"
-"./spec/features/audits_spec.rb[1:1]":
-  name: "./spec/features/audits_spec.rb[1:1]"
-  description: Audits work
-  environment_variables:
-    RSPEC_NAME: "./spec/features/audits_spec.rb:8"
-    RSPEC_TEST: "./spec/features/audits_spec.rb[1:1]"
-"./spec/features/auth-new-session_spec.rb[1:1]":
-  name: "./spec/features/auth-new-session_spec.rb[1:1]"
-  description: Sign in via new auth service sign in from new auth results in a valid
-    session in webapp
-  environment_variables:
-    RSPEC_NAME: "./spec/features/auth-new-session_spec.rb:4"
-    RSPEC_TEST: "./spec/features/auth-new-session_spec.rb[1:1]"
+# "./spec/features/api-client-with-cors-and-token_spec.rb[1:1]":
+#   name: "./spec/features/api-client-with-cors-and-token_spec.rb[1:1]"
+#   description: Accessing the API as a web client works with CORS
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/api-client-with-cors-and-token_spec.rb:16"
+#     RSPEC_TEST: "./spec/features/api-client-with-cors-and-token_spec.rb[1:1]"
+# "./spec/features/api-client-with-cors-and-token_spec.rb[1:2]":
+#   name: "./spec/features/api-client-with-cors-and-token_spec.rb[1:2]"
+#   description: Accessing the API as a web client works with CORS and Token
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/api-client-with-cors-and-token_spec.rb:24"
+#     RSPEC_TEST: "./spec/features/api-client-with-cors-and-token_spec.rb[1:2]"
+# "./spec/features/api-client-with-cors-and-token_spec.rb[1:3]":
+#   name: "./spec/features/api-client-with-cors-and-token_spec.rb[1:3]"
+#   description: Accessing the API as a web client works with CORS and invalid Token
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/api-client-with-cors-and-token_spec.rb:35"
+#     RSPEC_TEST: "./spec/features/api-client-with-cors-and-token_spec.rb[1:3]"
+# "./spec/features/api-doc-links_spec.rb[1:1]":
+#   name: "./spec/features/api-doc-links_spec.rb[1:1]"
+#   description: API Docs in the API browser returns 200 for every doc link
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/api-doc-links_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/api-doc-links_spec.rb[1:1]"
+# "./spec/features/audits_spec.rb[1:1]":
+#   name: "./spec/features/audits_spec.rb[1:1]"
+#   description: Audits work
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/audits_spec.rb:8"
+#     RSPEC_TEST: "./spec/features/audits_spec.rb[1:1]"
+# "./spec/features/auth-new-session_spec.rb[1:1]":
+#   name: "./spec/features/auth-new-session_spec.rb[1:1]"
+#   description: Sign in via new auth service sign in from new auth results in a valid
+#     session in webapp
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/auth-new-session_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/auth-new-session_spec.rb[1:1]"
 "./spec/features/basic_spec.rb[1:1:1]":
   name: "./spec/features/basic_spec.rb[1:1:1]"
   description: Basic smoke tests The Webapp (UI) is up and running.
@@ -48,162 +48,162 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/basic_spec.rb:21"
     RSPEC_TEST: "./spec/features/basic_spec.rb[1:2:1]"
-"./spec/features/changing-language_spec.rb[1:1]":
-  name: "./spec/features/changing-language_spec.rb[1:1]"
-  description: Changing language changes data ContextKey labels
-  environment_variables:
-    RSPEC_NAME: "./spec/features/changing-language_spec.rb:4"
-    RSPEC_TEST: "./spec/features/changing-language_spec.rb[1:1]"
-"./spec/features/changing-language_spec.rb[1:2]":
-  name: "./spec/features/changing-language_spec.rb[1:2]"
-  description: Changing language changes data Vocabulary labels
-  environment_variables:
-    RSPEC_NAME: "./spec/features/changing-language_spec.rb:22"
-    RSPEC_TEST: "./spec/features/changing-language_spec.rb[1:2]"
-"./spec/features/changing-language_spec.rb[1:3]":
-  name: "./spec/features/changing-language_spec.rb[1:3]"
-  description: Changing language changes data MetaKey labels
-  environment_variables:
-    RSPEC_NAME: "./spec/features/changing-language_spec.rb:40"
-    RSPEC_TEST: "./spec/features/changing-language_spec.rb[1:3]"
-"./spec/features/changing_translations_spec.rb[1:1:1]":
-  name: "./spec/features/changing_translations_spec.rb[1:1:1]"
-  description: Changing translations is reflected in apps Webapp Vocabulary labels
-  environment_variables:
-    RSPEC_NAME: "./spec/features/changing_translations_spec.rb:5"
-    RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:1:1]"
-"./spec/features/changing_translations_spec.rb[1:1:2]":
-  name: "./spec/features/changing_translations_spec.rb[1:1:2]"
-  description: Changing translations is reflected in apps Webapp MetaKey labels
-  environment_variables:
-    RSPEC_NAME: "./spec/features/changing_translations_spec.rb:24"
-    RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:1:2]"
-"./spec/features/changing_translations_spec.rb[1:1:3]":
-  name: "./spec/features/changing_translations_spec.rb[1:1:3]"
-  description: Changing translations is reflected in apps Webapp ContextKey labels
-  environment_variables:
-    RSPEC_NAME: "./spec/features/changing_translations_spec.rb:41"
-    RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:1:3]"
-"./spec/features/changing_translations_spec.rb[1:2:1]":
-  name: "./spec/features/changing_translations_spec.rb[1:2:1]"
-  description: Changing translations is reflected in apps API Vocabulary label
-  environment_variables:
-    RSPEC_NAME: "./spec/features/changing_translations_spec.rb:61"
-    RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:2:1]"
-"./spec/features/changing_translations_spec.rb[1:2:2]":
-  name: "./spec/features/changing_translations_spec.rb[1:2:2]"
-  description: Changing translations is reflected in apps API MetaKey label
-  environment_variables:
-    RSPEC_NAME: "./spec/features/changing_translations_spec.rb:80"
-    RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:2:2]"
-"./spec/features/deactivating-user_spec.rb[1:1]":
-  name: "./spec/features/deactivating-user_spec.rb[1:1]"
-  description: Deactivating a user another user
-  environment_variables:
-    RSPEC_NAME: "./spec/features/deactivating-user_spec.rb:4"
-    RSPEC_TEST: "./spec/features/deactivating-user_spec.rb[1:1]"
-"./spec/features/deactivating-user_spec.rb[1:2]":
-  name: "./spec/features/deactivating-user_spec.rb[1:2]"
-  description: Deactivating a user oneself
-  environment_variables:
-    RSPEC_NAME: "./spec/features/deactivating-user_spec.rb:23"
-    RSPEC_TEST: "./spec/features/deactivating-user_spec.rb[1:2]"
-"./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]":
-  name: "./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]"
-  description: Disabling all meta data edit tab for power users works
-  environment_variables:
-    RSPEC_NAME: "./spec/features/edit_meta_data_power_users_group_spec.rb:4"
-    RSPEC_TEST: "./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]"
-"./spec/features/linking-from-admin-people-to-webapp-people_spec.rb[1:1]":
-  name: "./spec/features/linking-from-admin-people-to-webapp-people_spec.rb[1:1]"
-  description: Linking from admin people to webapp people goes to a correct person
-    page
-  environment_variables:
-    RSPEC_NAME: "./spec/features/linking-from-admin-people-to-webapp-people_spec.rb:4"
-    RSPEC_TEST: "./spec/features/linking-from-admin-people-to-webapp-people_spec.rb[1:1]"
-"./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:1]":
-  name: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:1]"
-  description: Linking resources from webapp to admin goes to a correct media entry
-    page
-  environment_variables:
-    RSPEC_NAME: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb:9"
-    RSPEC_TEST: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:1]"
-"./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:2]":
-  name: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:2]"
-  description: Linking resources from webapp to admin goes to a correct collection
-    page
-  environment_variables:
-    RSPEC_NAME: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb:19"
-    RSPEC_TEST: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:2]"
-"./spec/features/media-file_up-and-download_spec.rb[1:1]":
-  name: "./spec/features/media-file_up-and-download_spec.rb[1:1]"
-  description: MediaEntry Up- and download. Upload a Media-Entry in the UI and publish
-    it. Access the API, follow the links to the corresponding Media-File. Download
-    the Media-File via the API in a complete piece and in parts. Verify that the downloaded
-    file is identical to the uploaded file.
-  environment_variables:
-    RSPEC_NAME: "./spec/features/media-file_up-and-download_spec.rb:10"
-    RSPEC_TEST: "./spec/features/media-file_up-and-download_spec.rb[1:1]"
-"./spec/features/modifying-core-meta-key_spec.rb[1:1]":
-  name: "./spec/features/modifying-core-meta-key_spec.rb[1:1]"
-  description: Modifying core meta key works
-  environment_variables:
-    RSPEC_NAME: "./spec/features/modifying-core-meta-key_spec.rb:4"
-    RSPEC_TEST: "./spec/features/modifying-core-meta-key_spec.rb[1:1]"
-"./spec/features/setting-password_spec.rb[1:1]":
-  name: "./spec/features/setting-password_spec.rb[1:1]"
-  description: Password resetting a users password
-  environment_variables:
-    RSPEC_NAME: "./spec/features/setting-password_spec.rb:4"
-    RSPEC_TEST: "./spec/features/setting-password_spec.rb[1:1]"
-"./spec/features/soft-delete-and-restore-entry_spec.rb[1:1]":
-  name: "./spec/features/soft-delete-and-restore-entry_spec.rb[1:1]"
-  description: Soft-delete and restore an entry works
-  environment_variables:
-    RSPEC_NAME: "./spec/features/soft-delete-and-restore-entry_spec.rb:4"
-    RSPEC_TEST: "./spec/features/soft-delete-and-restore-entry_spec.rb[1:1]"
-"./spec/features/switching-to-another-user_spec.rb[1:1]":
-  name: "./spec/features/switching-to-another-user_spec.rb[1:1]"
-  description: Switching to another user redirect to an user's archive
-  environment_variables:
-    RSPEC_NAME: "./spec/features/switching-to-another-user_spec.rb:4"
-    RSPEC_TEST: "./spec/features/switching-to-another-user_spec.rb[1:1]"
-"./spec/features/traverse-webapp2admin-via-session_spec.rb[1:1]":
-  name: "./spec/features/traverse-webapp2admin-via-session_spec.rb[1:1]"
-  description: Traversing from the UI to the Admin UI when signed in lets us pass
-    and shows the admin panel
-  environment_variables:
-    RSPEC_NAME: "./spec/features/traverse-webapp2admin-via-session_spec.rb:5"
-    RSPEC_TEST: "./spec/features/traverse-webapp2admin-via-session_spec.rb[1:1]"
-"./spec/features/traverse-webapp2api-via-session_spec.rb[1:1]":
-  name: "./spec/features/traverse-webapp2api-via-session_spec.rb[1:1]"
-  description: Traversing from the UI to the API browser when signed in lets us pass
-    and shows the proper auth info
-  environment_variables:
-    RSPEC_NAME: "./spec/features/traverse-webapp2api-via-session_spec.rb:5"
-    RSPEC_TEST: "./spec/features/traverse-webapp2api-via-session_spec.rb[1:1]"
-"./spec/features/webapp-auth_spec.rb[1:1:1]":
-  name: "./spec/features/webapp-auth_spec.rb[1:1:1]"
-  description: Auth delegation from webapp Signing in from the home page
-  environment_variables:
-    RSPEC_NAME: "./spec/features/webapp-auth_spec.rb:9"
-    RSPEC_TEST: "./spec/features/webapp-auth_spec.rb[1:1:1]"
-"./spec/features/webapp-auth_spec.rb[1:1:2]":
-  name: "./spec/features/webapp-auth_spec.rb[1:1:2]"
-  description: Auth delegation from webapp Signing in from a protected path
-  environment_variables:
-    RSPEC_NAME: "./spec/features/webapp-auth_spec.rb:15"
-    RSPEC_TEST: "./spec/features/webapp-auth_spec.rb[1:1:2]"
-"./spec/features/webapp-auth_spec.rb[1:1:3]":
-  name: "./spec/features/webapp-auth_spec.rb[1:1:3]"
-  description: Auth delegation from webapp Signing in from a public path using the
-    login button in the head
-  environment_variables:
-    RSPEC_NAME: "./spec/features/webapp-auth_spec.rb:22"
-    RSPEC_TEST: "./spec/features/webapp-auth_spec.rb[1:1:3]"
-"./spec/features/webapp-auth_spec.rb[1:2]":
-  name: "./spec/features/webapp-auth_spec.rb[1:2]"
-  description: Auth delegation from webapp Sign out
-  environment_variables:
-    RSPEC_NAME: "./spec/features/webapp-auth_spec.rb:38"
-    RSPEC_TEST: "./spec/features/webapp-auth_spec.rb[1:2]"
+# "./spec/features/changing-language_spec.rb[1:1]":
+#   name: "./spec/features/changing-language_spec.rb[1:1]"
+#   description: Changing language changes data ContextKey labels
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/changing-language_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/changing-language_spec.rb[1:1]"
+# "./spec/features/changing-language_spec.rb[1:2]":
+#   name: "./spec/features/changing-language_spec.rb[1:2]"
+#   description: Changing language changes data Vocabulary labels
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/changing-language_spec.rb:22"
+#     RSPEC_TEST: "./spec/features/changing-language_spec.rb[1:2]"
+# "./spec/features/changing-language_spec.rb[1:3]":
+#   name: "./spec/features/changing-language_spec.rb[1:3]"
+#   description: Changing language changes data MetaKey labels
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/changing-language_spec.rb:40"
+#     RSPEC_TEST: "./spec/features/changing-language_spec.rb[1:3]"
+# "./spec/features/changing_translations_spec.rb[1:1:1]":
+#   name: "./spec/features/changing_translations_spec.rb[1:1:1]"
+#   description: Changing translations is reflected in apps Webapp Vocabulary labels
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/changing_translations_spec.rb:5"
+#     RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:1:1]"
+# "./spec/features/changing_translations_spec.rb[1:1:2]":
+#   name: "./spec/features/changing_translations_spec.rb[1:1:2]"
+#   description: Changing translations is reflected in apps Webapp MetaKey labels
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/changing_translations_spec.rb:24"
+#     RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:1:2]"
+# "./spec/features/changing_translations_spec.rb[1:1:3]":
+#   name: "./spec/features/changing_translations_spec.rb[1:1:3]"
+#   description: Changing translations is reflected in apps Webapp ContextKey labels
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/changing_translations_spec.rb:41"
+#     RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:1:3]"
+# "./spec/features/changing_translations_spec.rb[1:2:1]":
+#   name: "./spec/features/changing_translations_spec.rb[1:2:1]"
+#   description: Changing translations is reflected in apps API Vocabulary label
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/changing_translations_spec.rb:61"
+#     RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:2:1]"
+# "./spec/features/changing_translations_spec.rb[1:2:2]":
+#   name: "./spec/features/changing_translations_spec.rb[1:2:2]"
+#   description: Changing translations is reflected in apps API MetaKey label
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/changing_translations_spec.rb:80"
+#     RSPEC_TEST: "./spec/features/changing_translations_spec.rb[1:2:2]"
+# "./spec/features/deactivating-user_spec.rb[1:1]":
+#   name: "./spec/features/deactivating-user_spec.rb[1:1]"
+#   description: Deactivating a user another user
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/deactivating-user_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/deactivating-user_spec.rb[1:1]"
+# "./spec/features/deactivating-user_spec.rb[1:2]":
+#   name: "./spec/features/deactivating-user_spec.rb[1:2]"
+#   description: Deactivating a user oneself
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/deactivating-user_spec.rb:23"
+#     RSPEC_TEST: "./spec/features/deactivating-user_spec.rb[1:2]"
+# "./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]":
+#   name: "./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]"
+#   description: Disabling all meta data edit tab for power users works
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/edit_meta_data_power_users_group_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]"
+# "./spec/features/linking-from-admin-people-to-webapp-people_spec.rb[1:1]":
+#   name: "./spec/features/linking-from-admin-people-to-webapp-people_spec.rb[1:1]"
+#   description: Linking from admin people to webapp people goes to a correct person
+#     page
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/linking-from-admin-people-to-webapp-people_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/linking-from-admin-people-to-webapp-people_spec.rb[1:1]"
+# "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:1]":
+#   name: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:1]"
+#   description: Linking resources from webapp to admin goes to a correct media entry
+#     page
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb:9"
+#     RSPEC_TEST: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:1]"
+# "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:2]":
+#   name: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:2]"
+#   description: Linking resources from webapp to admin goes to a correct collection
+#     page
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb:19"
+#     RSPEC_TEST: "./spec/features/linking-resources-from-webapp-to-admin_spec.rb[1:2]"
+# "./spec/features/media-file_up-and-download_spec.rb[1:1]":
+#   name: "./spec/features/media-file_up-and-download_spec.rb[1:1]"
+#   description: MediaEntry Up- and download. Upload a Media-Entry in the UI and publish
+#     it. Access the API, follow the links to the corresponding Media-File. Download
+#     the Media-File via the API in a complete piece and in parts. Verify that the downloaded
+#     file is identical to the uploaded file.
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/media-file_up-and-download_spec.rb:10"
+#     RSPEC_TEST: "./spec/features/media-file_up-and-download_spec.rb[1:1]"
+# "./spec/features/modifying-core-meta-key_spec.rb[1:1]":
+#   name: "./spec/features/modifying-core-meta-key_spec.rb[1:1]"
+#   description: Modifying core meta key works
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/modifying-core-meta-key_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/modifying-core-meta-key_spec.rb[1:1]"
+# "./spec/features/setting-password_spec.rb[1:1]":
+#   name: "./spec/features/setting-password_spec.rb[1:1]"
+#   description: Password resetting a users password
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/setting-password_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/setting-password_spec.rb[1:1]"
+# "./spec/features/soft-delete-and-restore-entry_spec.rb[1:1]":
+#   name: "./spec/features/soft-delete-and-restore-entry_spec.rb[1:1]"
+#   description: Soft-delete and restore an entry works
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/soft-delete-and-restore-entry_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/soft-delete-and-restore-entry_spec.rb[1:1]"
+# "./spec/features/switching-to-another-user_spec.rb[1:1]":
+#   name: "./spec/features/switching-to-another-user_spec.rb[1:1]"
+#   description: Switching to another user redirect to an user's archive
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/switching-to-another-user_spec.rb:4"
+#     RSPEC_TEST: "./spec/features/switching-to-another-user_spec.rb[1:1]"
+# "./spec/features/traverse-webapp2admin-via-session_spec.rb[1:1]":
+#   name: "./spec/features/traverse-webapp2admin-via-session_spec.rb[1:1]"
+#   description: Traversing from the UI to the Admin UI when signed in lets us pass
+#     and shows the admin panel
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/traverse-webapp2admin-via-session_spec.rb:5"
+#     RSPEC_TEST: "./spec/features/traverse-webapp2admin-via-session_spec.rb[1:1]"
+# "./spec/features/traverse-webapp2api-via-session_spec.rb[1:1]":
+#   name: "./spec/features/traverse-webapp2api-via-session_spec.rb[1:1]"
+#   description: Traversing from the UI to the API browser when signed in lets us pass
+#     and shows the proper auth info
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/traverse-webapp2api-via-session_spec.rb:5"
+#     RSPEC_TEST: "./spec/features/traverse-webapp2api-via-session_spec.rb[1:1]"
+# "./spec/features/webapp-auth_spec.rb[1:1:1]":
+#   name: "./spec/features/webapp-auth_spec.rb[1:1:1]"
+#   description: Auth delegation from webapp Signing in from the home page
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/webapp-auth_spec.rb:9"
+#     RSPEC_TEST: "./spec/features/webapp-auth_spec.rb[1:1:1]"
+# "./spec/features/webapp-auth_spec.rb[1:1:2]":
+#   name: "./spec/features/webapp-auth_spec.rb[1:1:2]"
+#   description: Auth delegation from webapp Signing in from a protected path
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/webapp-auth_spec.rb:15"
+#     RSPEC_TEST: "./spec/features/webapp-auth_spec.rb[1:1:2]"
+# "./spec/features/webapp-auth_spec.rb[1:1:3]":
+#   name: "./spec/features/webapp-auth_spec.rb[1:1:3]"
+#   description: Auth delegation from webapp Signing in from a public path using the
+#     login button in the head
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/webapp-auth_spec.rb:22"
+#     RSPEC_TEST: "./spec/features/webapp-auth_spec.rb[1:1:3]"
+# "./spec/features/webapp-auth_spec.rb[1:2]":
+#   name: "./spec/features/webapp-auth_spec.rb[1:2]"
+#   description: Auth delegation from webapp Sign out
+#   environment_variables:
+#     RSPEC_NAME: "./spec/features/webapp-auth_spec.rb:38"
+#     RSPEC_TEST: "./spec/features/webapp-auth_spec.rb[1:2]"
