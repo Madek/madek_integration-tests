@@ -25,7 +25,7 @@ describe 'Basic smoke tests' do
         Mail.all.count == 1
       end
       expect(Mail.first.to.first).to eq email.to_address
-      puts(email.reload)
+      puts(email.error_message)
       expect(email.reload.is_successful).to be true
     end
   end
