@@ -22,7 +22,7 @@ end
 
 def empty_mailbox
   Mail.delete_all
-  system("rm -rf #{FAKE_MAILBOX_DIR}")
+  system("rm -rf #{FAKE_MAILBOX_DIR}/*")
 end
 
 def setup_email_client
