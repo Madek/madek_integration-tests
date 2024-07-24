@@ -111,6 +111,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
+    pg-hstore (1.2.0)
     post_office (1.0.1)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -202,6 +203,7 @@ DEPENDENCIES
   mail
   nrepl!
   pg
+  pg-hstore (~> 1.2)
   post_office
   pry
   rest-client

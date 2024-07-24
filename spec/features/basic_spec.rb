@@ -19,14 +19,12 @@ describe 'Basic smoke tests' do
     end
 
     it 'works' do
-      puts "SMTP PORT: #{SmtpSetting.first.port}"
       user = User.find(login: 'normin')
       email = FactoryBot.create(:email, user_id: user.id)
       wait_until(5) do
         Mail.all.count == 1
       end
       expect(Mail.first.to.first).to eq email.to_address
-      puts(email.error_message)
       expect(email.reload.is_successful).to be true
     end
   end
