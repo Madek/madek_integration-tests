@@ -36,12 +36,18 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/auth-new-session_spec.rb:4"
     RSPEC_TEST: "./spec/features/auth-new-session_spec.rb[1:1]"
-"./spec/features/basic_spec.rb[1:1]":
-  name: "./spec/features/basic_spec.rb[1:1]"
-  description: The Webapp (UI)  is up and running.
+"./spec/features/basic_spec.rb[1:1:1]":
+  name: "./spec/features/basic_spec.rb[1:1:1]"
+  description: Basic smoke tests The Webapp (UI) is up and running.
   environment_variables:
-    RSPEC_NAME: "./spec/features/basic_spec.rb:4"
-    RSPEC_TEST: "./spec/features/basic_spec.rb[1:1]"
+    RSPEC_NAME: "./spec/features/basic_spec.rb:5"
+    RSPEC_TEST: "./spec/features/basic_spec.rb[1:1:1]"
+"./spec/features/basic_spec.rb[1:2:1]":
+  name: "./spec/features/basic_spec.rb[1:2:1]"
+  description: Basic smoke tests Mailing Setup works
+  environment_variables:
+    RSPEC_NAME: "./spec/features/basic_spec.rb:21"
+    RSPEC_TEST: "./spec/features/basic_spec.rb[1:2:1]"
 "./spec/features/changing-language_spec.rb[1:1]":
   name: "./spec/features/changing-language_spec.rb[1:1]"
   description: Changing language changes data ContextKey labels
@@ -144,6 +150,12 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/modifying-core-meta-key_spec.rb:4"
     RSPEC_TEST: "./spec/features/modifying-core-meta-key_spec.rb[1:1]"
+"./spec/features/notifications_spec.rb[1:1]":
+  name: "./spec/features/notifications_spec.rb[1:1]"
+  description: Notifications work
+  environment_variables:
+    RSPEC_NAME: "./spec/features/notifications_spec.rb:11"
+    RSPEC_TEST: "./spec/features/notifications_spec.rb[1:1]"
 "./spec/features/setting-password_spec.rb[1:1]":
   name: "./spec/features/setting-password_spec.rb[1:1]"
   description: Password resetting a users password
