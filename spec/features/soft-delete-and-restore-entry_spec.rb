@@ -16,6 +16,10 @@ feature 'Soft-delete and restore an entry' do
     click_on("Löschen")
     visit "/entries/#{entry.id}"
     expect(page).to have_content "ActiveRecord::RecordNotFound: Couldn't find MediaEntry"
+    visit "/files/#{entry.media_file.id}"
+    expect(page).to have_content "ActiveRecord::RecordNotFound: MediaFile not found"
+    visit "/media/#{entry.media_file.previews.first.id}"
+    expect(page).to have_content "ActiveRecord::RecordNotFound: Preview not found"
 
     find(id: "#{user.first_name} #{user.last_name}_menu").click
     click_on("Abmelden")
@@ -38,9 +42,14 @@ feature 'Soft-delete and restore an entry' do
     within find("tr[data-id='#{entry.id}']") do
       find('.glyphicon-eye-open').click
     end
+    click_on "Media-File"
+    expect(find(".page-header h1")).to have_content "Deleted"
+    visit "/admin/media_entries/#{entry.id}"
+
     accept_alert do
       click_on "Restore"
     end
+
     find(".alert.alert-success", text: "Success! Media-Entry restored successfully.")
 
     visit "/my"
