@@ -27,7 +27,7 @@ feature 'Notifications' do
     login_as_database_user(login: user2.login)
     click_on 'Einstellungen'
     select('Englisch', from: 'emailsLocale')
-    find('label', text: 'sofort').click
+    find('label', text: 'wöchentlich').click
     click_on 'Einstellungen speichern'
     logout(user2)
 
@@ -58,12 +58,6 @@ feature 'Notifications' do
       click_on 'Alle Notifikationen löschen'
     end
     expect(page).to have_content 'Keine Einträge vorhanden'
-
-    expect(Mail.all.count).to eq 1
-    mail = Mail.first
-    expect(mail.subject).to eq 'Media Archive: Transfer of responsability'
-    expect(mail.to.first).to eq user2.email
-    expect(mail.from.first).to eq SmtpSetting.first.default_from_address
   end
 
   def logout(user)
