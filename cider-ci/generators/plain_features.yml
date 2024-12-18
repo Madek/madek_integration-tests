@@ -106,7 +106,7 @@
   name: "./spec/features/deactivating-user_spec.rb[1:2]"
   description: Deactivating a user oneself
   environment_variables:
-    RSPEC_NAME: "./spec/features/deactivating-user_spec.rb:23"
+    RSPEC_NAME: "./spec/features/deactivating-user_spec.rb:22"
     RSPEC_TEST: "./spec/features/deactivating-user_spec.rb[1:2]"
 "./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]":
   name: "./spec/features/edit_meta_data_power_users_group_spec.rb[1:1]"
@@ -156,12 +156,12 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/notifications_spec.rb:11"
     RSPEC_TEST: "./spec/features/notifications_spec.rb[1:1]"
-"./spec/features/setting-password_spec.rb[1:1]":
-  name: "./spec/features/setting-password_spec.rb[1:1]"
+"./spec/features/reset-password_spec.rb[1:1]":
+  name: "./spec/features/reset-password_spec.rb[1:1]"
   description: Password resetting a users password
   environment_variables:
-    RSPEC_NAME: "./spec/features/setting-password_spec.rb:4"
-    RSPEC_TEST: "./spec/features/setting-password_spec.rb[1:1]"
+    RSPEC_NAME: "./spec/features/reset-password_spec.rb:8"
+    RSPEC_TEST: "./spec/features/reset-password_spec.rb[1:1]"
 "./spec/features/soft-delete-and-restore-entry_spec.rb[1:1]":
   name: "./spec/features/soft-delete-and-restore-entry_spec.rb[1:1]"
   description: Soft-delete and restore an entry works

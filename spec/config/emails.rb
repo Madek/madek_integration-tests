@@ -1,8 +1,6 @@
 require 'mail'
 
 MADEK_MAIL_SMTP_PORT = ENV.fetch('MADEK_MAIL_SMTP_PORT','25')
-MADEK_MAIL_DIR = ENV['MADEK_MAIL_DIR'] || '../mail'
-FAKE_MAILBOX_DIR = "#{MADEK_MAIL_DIR}/tmp/fake-mailbox"
 
 RSpec.configure do |config|
   config.before :suite do
@@ -10,6 +8,8 @@ RSpec.configure do |config|
   end
   config.before :each do |example|
     empty_mailbox
+    SmtpSetting.first.update(is_enabled: true)
+    setup_smtp_port
   end
 end
 
@@ -22,7 +22,6 @@ end
 
 def empty_mailbox
   Mail.delete_all
-  system("rm -rf #{FAKE_MAILBOX_DIR}/*")
 end
 
 def setup_email_client
@@ -33,5 +32,15 @@ def setup_email_client
                      user_name: 'any',
                      password: 'any',
                      enable_ssl: false)
+  end
+end
+
+def assert_received_email(from: nil, to:, subject: nil)
+  wait_until do
+    Mail.all.detect do |m|
+      (from ? m.from == [from] : true) &&
+        (to ? m.to == [to] : true) &&
+        (subject ? m.subject.match?(subject) : true)
+    end
   end
 end

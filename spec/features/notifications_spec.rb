@@ -2,10 +2,8 @@ require 'spec_helper'
 
 feature 'Notifications' do
   before(:each) do
-    SmtpSetting.first.update(is_enabled: true)
     site_titles_hs = PgHstore.dump({de: 'Medienarchiv', en: 'Media Archive'}, true)
     AppSetting.first.update(site_titles: site_titles_hs)
-    setup_smtp_port
   end
 
   scenario "work" do

@@ -4,7 +4,7 @@ require 'sequel'
 
 ### data ######################################################################
 
-PERSONAS_DUMP = '../webapp/db/personas.pgbin'
+PERSONAS_DUMP = '../datalayer/db/personas.pgbin'
 
 ### sequel ####################################################################
 
@@ -16,7 +16,8 @@ PERSONAS_DUMP = '../webapp/db/personas.pgbin'
 
 
 def database_name
-  ENV['DATABASE'].presence ||
+  ENV['DB_NAME_TEST'].presence || 
+    ENV['DATABASE'].presence ||
     ENV['DB_NAME'].presence || 
     ENV['PGDATABASE'].presence ||
     'madek'

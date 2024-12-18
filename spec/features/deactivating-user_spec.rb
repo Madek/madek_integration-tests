@@ -9,7 +9,6 @@ feature 'Deactivating a user' do
     fill_in("user_last_name", with: "User")
     fill_in("user_login", with: "deact_user")
     fill_in("user_email", with: "deact_user@example.com") 
-    fill_in("user_password", with: "password")
     fill_in("user_active_until", with: Date.yesterday)
     click_on("Save")
     visit("/")
