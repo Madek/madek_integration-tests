@@ -2,13 +2,11 @@
 set -euo pipefail
 
 PROJECT_DIR="$(cd -- "$(dirname "${BASH_SOURCE}")" ; cd ../.. > /dev/null 2>&1 && pwd -P)"
-PROJECT=madek-integration-tests
-PLUGIN=ruby
-PLUGIN_URL=https://github.com/asdf-vm/asdf-ruby.git
+ASDF_PLUGIN=ruby
+ASDF_PLUGIN_URL=https://github.com/asdf-vm/asdf-ruby.git
 
 source $PROJECT_DIR/bin/env/asdf-helper.bash
 asdf-update-plugin
 
-cd $PROJECT_DIR
-bundle install --quiet
+bundle install "$@"
 # vi: ft=sh

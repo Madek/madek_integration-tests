@@ -1,5 +1,6 @@
 traits:
   asdf: true
+  ci-ax101-06: true
 
 scripts:
 
@@ -9,9 +10,10 @@ scripts:
     body: |
       #!/usr/bin/env bash
       set -euo pipefail
-      ${INTEGRATION_TESTS_DIR}/bin/env/ruby-setup 
+      cd ${INTEGRATION_TESTS_DIR}
+      ./bin/env/ruby-setup
 
   test:
     start_when:
       integration-tests-bundle-ruby has passed:
-        script_key: integration-tests-bundle-ruby 
+        script_key: integration-tests-bundle-ruby
