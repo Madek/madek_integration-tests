@@ -36,6 +36,12 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/auth-new-session_spec.rb:4"
     RSPEC_TEST: "./spec/features/auth-new-session_spec.rb[1:1]"
+"./spec/features/banner-message_spec.rb[1:1]":
+  name: "./spec/features/banner-message_spec.rb[1:1]"
+  description: Displaying a banner message for logged in user works
+  environment_variables:
+    RSPEC_NAME: "./spec/features/banner-message_spec.rb:4"
+    RSPEC_TEST: "./spec/features/banner-message_spec.rb[1:1]"
 "./spec/features/basic_spec.rb[1:1:1]":
   name: "./spec/features/basic_spec.rb[1:1:1]"
   description: Basic smoke tests The Webapp (UI) is up and running.
