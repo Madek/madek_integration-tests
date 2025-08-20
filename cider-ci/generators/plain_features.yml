@@ -150,6 +150,12 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/media-file_up-and-download_spec.rb:10"
     RSPEC_TEST: "./spec/features/media-file_up-and-download_spec.rb[1:1]"
+"./spec/features/meta-data-roles_spec.rb[1:1]":
+  name: "./spec/features/meta-data-roles_spec.rb[1:1]"
+  description: Meta-Data-People (with Roles) works
+  environment_variables:
+    RSPEC_NAME: "./spec/features/meta-data-roles_spec.rb:4"
+    RSPEC_TEST: "./spec/features/meta-data-roles_spec.rb[1:1]"
 "./spec/features/modifying-core-meta-key_spec.rb[1:1]":
   name: "./spec/features/modifying-core-meta-key_spec.rb[1:1]"
   description: Modifying core meta key works
