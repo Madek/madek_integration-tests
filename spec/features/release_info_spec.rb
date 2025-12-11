@@ -19,8 +19,9 @@ describe 'webapp: release info', type: :feature, ci_group: :release_info do
     visit '/release'
 
     expected_text = <<~TEXT.strip
-      Deployment: Freitag, 5. August 2016 23:03, Build: Freitag, 5. August 2016 14:35
+      Deployment: Freitag, 5. August 2016 23:03
       Source History
+      Build
       Madek 2.0.0
       third release
       Changes:
