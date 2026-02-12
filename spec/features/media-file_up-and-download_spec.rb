@@ -11,15 +11,17 @@ feature 'MediaEntry Up- and download.' do
     << 'Access the API, follow the links to the corresponding Media-File. ' \
     << 'Download the Media-File via the API in a complete piece and in parts. ' \
     << 'Verify that the downloaded file is identical to the uploaded file.' do
-    clean_results = ['DELETE FROM meta_data;',
-                     'DELETE FROM zencoder_jobs;',
-                     'DELETE FROM media_files;',
-                     'DELETE FROM edit_sessions;',
-                     'DELETE FROM collections;',
-                     'DELETE FROM media_entries;',
-                     'DELETE FROM context_keys'].map do|cmd|
-      Helpers::ConfigurationManagement.invoke_sql cmd
-    end
+    database.run <<-SQL
+      TRUNCATE TABLE
+        meta_data,
+        zencoder_jobs,
+        media_files,
+        edit_sessions,
+        collections,
+        media_entries,
+        context_keys
+      CASCADE;
+    SQL
 
     visit '/'
     expect(page).to have_content 'Media Archive'
