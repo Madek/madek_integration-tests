@@ -1,6 +1,5 @@
 require 'active_support/all'
 require 'capybara/rspec'
-require 'helpers/configuration_management'
 require 'helpers/misc'
 require 'helpers/mock_api_client'
 require 'logger'
@@ -17,7 +16,6 @@ end
 
 RSpec.configure do |config|
   config.include Helpers::Misc
-  config.include Helpers::ConfigurationManagement
   config.include Helpers::MockApiClient
 
   port = Integer(ENV['REVERSE_PROXY_HTTP_PORT'].presence || '3100')

@@ -4,13 +4,12 @@ describe 'Disabling all meta data edit tab for power users', type: :feature do
   it 'works' do
     visit '/'
     login_as_database_user
-    sql_result = Helpers::ConfigurationManagement.execute_sql <<~SQL
+    group = database[<<~SQL].first
       SELECT *
       FROM groups
       WHERE type = 'Group'
       LIMIT 1
     SQL
-    group = sql_result.first
     visit('/admin/app_settings')
     within("#edit_meta_data_power_users_group_id") { click_on "Edit" }
     fill_in("app_setting[edit_meta_data_power_users_group_id]", with: group[:id])
