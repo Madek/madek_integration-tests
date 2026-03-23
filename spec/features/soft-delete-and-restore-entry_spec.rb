@@ -15,7 +15,7 @@ feature 'Soft-delete and restore an entry' do
     click_on("Medieneintrag löschen")
     click_on("Löschen")
     visit "/entries/#{entry.id}"
-    expect(page).to have_content "ActiveRecord::RecordNotFound: Couldn't find MediaEntry"
+    expect(page).to have_content "Inhalt wurde entfernt und ist nicht mehr verfügbar."
     visit "/files/#{entry.media_file.id}"
     expect(page).to have_content "ActiveRecord::RecordNotFound: MediaFile not found"
     visit "/media/#{entry.media_file.previews.first.id}"
@@ -28,7 +28,7 @@ feature 'Soft-delete and restore an entry' do
     login_as_database_user login: admin.login, password: 'password'
 
     visit "/entries/#{entry.id}"
-    expect(page).to have_content "ActiveRecord::RecordNotFound: Couldn't find MediaEntry"
+    expect(page).to have_content "Inhalt wurde entfernt und ist nicht mehr verfügbar."
     find(id: "#{admin.first_name} #{admin.last_name}_menu").click
     click_on "In Admin-Modus wechseln"
     # visit current_path
