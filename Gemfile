@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'activesupport', '~> 8.0.0'
+gem 'activesupport', '~> 8.1.0'
 gem 'addressable'
 gem 'capybara', '~> 3.8'
 gem 'factory_bot'
