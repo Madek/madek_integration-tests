@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'activesupport', '~> 8.1.0'
-gem 'addressable'
+gem 'addressable', '>= 2.9.0'
 gem 'capybara', '~> 3.8'
 gem 'factory_bot'
 gem 'faker'
