@@ -42,7 +42,8 @@ feature 'Meta-Data-People (with Roles)' do
     find(".ui-form-group", text: "Autor/in").find("input").set person.first_name
     find(".ui-autocomplete__person-suggestion").click
     click_on "Funktion hinzufügen"
-    find(".ui-menu-item").click
+    el = find(".ui-role-select")
+    autocomplete_and_choose_first(el, "")
     click_on "Übernehmen"
     click_on "Speichern"
     expect(first(".ui-tag-cloud-person-roles-item").text).to eq "#{person.first_name} #{person.last_name}\n:#{role_label_de}"
