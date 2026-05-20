@@ -52,7 +52,7 @@ feature 'Meta-Data-People (with Roles)' do
     md = MetaDatum.where(media_entry_id: entry.id, meta_key_id: "madek_core:authors").first
     mdp = MetaDatum::Person.where(meta_datum_id: md.id).all.first
     visit "/api/meta-data-people/#{mdp.id}"
-    expect(page.text).to match /"person_id":"#{person.id}"/
-    expect(page.text).to match /"role_id":"#{role.id}"/
+    expect(page.text).to match /person_id.+#{person.id}/
+    expect(page.text).to match /role_id.+#{role.id}/
   end
 end

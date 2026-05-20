@@ -13,6 +13,7 @@ module Helpers
       click_on "Anmelden"
       fill_in 'password', with: password
       click_on "Anmelden"
+      expect(page).to have_content('Mein Archiv')
     end
 
     def wait_until(wait_time = 60)
