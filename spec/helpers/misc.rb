@@ -16,13 +16,6 @@ module Helpers
       expect(page).to have_content('Mein Archiv')
     end
 
-    def wait_until(wait_time = 60)
-      Timeout.timeout(wait_time) do
-        sleep(0.1) until value = yield
-        value
-      end
-    end
-
     def api_nrepl(code)
       port = Integer(ENV['API_NREPL_PORT'].presence || 7802)
       _eval_clj_via_nrepl(port, code)

@@ -1,14 +1,19 @@
 function asdf-load() {
-  if type "asdf" > /dev/null; then
+  if type "asdf" > /dev/null 2>&1; then
     echo "asdf OK"
-  else
+  elif type "mise" > /dev/null 2>&1; then
+    echo "mise OK (skipping asdf)"
+  elif [[ -f ~/.asdf/asdf.sh ]]; then
     echo "sourcing asdf from ~/.asdf/asdf.sh since it seems not present"
     source ~/.asdf/asdf.sh
+  else
+    echo "WARNING: neither asdf nor mise found; tool versions may not be set correctly"
   fi
 }
 
 function asdf-update-plugin-base(){
   echo "INFO updateting asdf plugin ${ASDF_PLUGIN} for ${PROJECT_NAME}"
+  asdf-load
   if $(asdf plugin list | grep -q $ASDF_PLUGIN); then
     echo "asdf $ASDF_PLUGIN found: updating "
     asdf plugin update $ASDF_PLUGIN
@@ -21,9 +26,9 @@ function asdf-update-plugin-base(){
 }
 
 function asdf-update-plugin () {
+  asdf-load
   TMPDIR=${TMPDIR:-/tmp/}
   PROJECT_DIR="$(cd -- "$(dirname "${BASH_SOURCE}")" ; cd ../.. > /dev/null 2>&1 && pwd -P)"
-  PROJECT_NAME="madek_$(basename $PROJECT_DIR)"
   # in deployed states we are not in a git repo; however asdf und plugins should be set up already
   if ! git -C $PROJECT_DIR rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     echo "WARNING ${PROJECT_DIR} is not a git repository, SKIPPING asdf plugin and install update"

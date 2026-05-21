@@ -1,11 +1,21 @@
 #!/usr/bin/env bash
 
-echo 'running...'
+set -eou pipefail
+
+
+PROJECT_DIR="$(cd -- "$(dirname "${BASH_SOURCE}")" ; cd ../.. > /dev/null 2>&1 && pwd -P)"
+INTEGRATION_TESTS_DIR="$PROJECT_DIR/integration-tests"
+
+cd "$INTEGRATION_TESTS_DIR"
+
+echo 'MADEK integration tests reverse proxy running...'
 
 DYLD_LIBRARY_PATH=/opt/homebrew/opt/apache2/lib/httpd/modules/ \
   httpd \
   -C 'LoadModule mpm_worker_module mod_mpm_worker.so' \
   -d reverse-proxy \
   -f conf/httpd_example.conf \
-  -e info \
+  -e debug \
   -DFOREGROUND
+
+  echo 'MADEK integration tests reverse proxy stopped.'
