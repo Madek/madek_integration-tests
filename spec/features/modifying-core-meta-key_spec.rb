@@ -33,6 +33,10 @@ describe 'Modifying core meta key', type: :feature do
     expect(find('#meta_key_documentation_urls_de').value).to eq 'newest documentation url DE'
     expect(find('#meta_key_documentation_urls_en').value).to eq 'newest documentation url EN'
 
+    visit '/my/settings'
+    check 'showAllDataTabInEditMode'
+    click_on 'Einstellungen speichern'
+
     visit '/my/content_media_entries'
     find('.ui-resource .link').click
     find('.icon-pen').click
