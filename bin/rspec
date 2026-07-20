@@ -11,11 +11,5 @@ source $PROJECT_DIR/bin/env/select-tool-versions-manager
 ./bin/env/geckodriver-setup
 ./bin/env/ruby-setup
 
-if [[ "$TOOL_VERSIONS_MANAGER" =~ ^(asdf|asdf-vm)$ ]]; then
-	# clean-up the mess the ruby geckodriver gem might have created by placing it in ruby/bin/geckodriver
-	rm -rf ~/.asdf/installs/ruby/$(asdf current ruby | awk '{print $2; }')/bin/gecko*
-	asdf reshim
-fi
-
 bundle exec rspec "$@"
 # vi: ft=sh
