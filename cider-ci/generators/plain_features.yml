@@ -208,6 +208,13 @@
   environment_variables:
     RSPEC_NAME: "./spec/features/traverse-webapp2api-via-session_spec.rb:5"
     RSPEC_TEST: "./spec/features/traverse-webapp2api-via-session_spec.rb[1:1]"
+"./spec/features/uberadmin-view-edit-tiers_spec.rb[1:1]":
+  name: "./spec/features/uberadmin-view-edit-tiers_spec.rb[1:1]"
+  description: Uberadmin view/edit tiers view tier sees but cannot edit; edit tier
+    can do both
+  environment_variables:
+    RSPEC_NAME: "./spec/features/uberadmin-view-edit-tiers_spec.rb:14"
+    RSPEC_TEST: "./spec/features/uberadmin-view-edit-tiers_spec.rb[1:1]"
 "./spec/features/webapp-auth_spec.rb[1:1:1]":
   name: "./spec/features/webapp-auth_spec.rb[1:1:1]"
   description: Auth delegation from webapp Signing in from the home page
