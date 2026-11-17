@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'activesupport', '~> 8.1', '>= 8.1.4.1'
+gem 'activesupport', '~> 8.1.4', '>= 8.1.4.1'
 # json_roa-client → faraday_middleware 0.14 breaks on json 3 (JSON.parse arity).
 gem 'json', '< 3'
 gem 'rack', '~> 3.2.8'
+# Used directly in spec/features/auth-new-session_spec.rb (Addressable::URI.parse).
+gem 'addressable'
 gem 'capybara', '~> 3.8'
 gem 'factory_bot'
 gem 'faker'
