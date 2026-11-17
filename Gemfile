@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'activesupport', '~> 8.1.4.1'
-gem 'nokogiri', '>= 1.19.5'
+gem 'activesupport', '~> 8.1', '>= 8.1.4.1'
+# json_roa-client → faraday_middleware 0.14 breaks on json 3 (JSON.parse arity).
+gem 'json', '< 3'
 gem 'rack', '~> 3.2.8'
-gem 'addressable', '>= 2.9.1'
 gem 'capybara', '~> 3.8'
 gem 'factory_bot'
 gem 'faker'
